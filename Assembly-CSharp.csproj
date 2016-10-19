@@ -45,16 +45,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Buttons\Button_Bonus.cs" />
-     <Compile Include="Assets\Scripts\Buttons\Button_ClickArea.cs" />
-     <Compile Include="Assets\Scripts\Buttons\Button_Potions.cs" />
-     <Compile Include="Assets\Scripts\Buttons\Button_Ressources.cs" />
-     <Compile Include="Assets\Scripts\Buttons\Button_StockEx.cs" />
-     <Compile Include="Assets\Scripts\Classe_RayCast.cs" />
+     <Compile Include="Assets\Scripts\Classes\Classe_RayCast.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Input.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Score.cs" />
-     <Compile Include="Assets\Scripts\Mouse_Click.cs" />
-     <Compile Include="Assets\Scripts\Screen_Slide.cs" />
+     <Compile Include="Assets\Scripts\Player\Mouse_Click.cs" />
+     <Compile Include="Assets\Scripts\Screens\Buttons\Button_ClickArea.cs" />
+     <Compile Include="Assets\Scripts\Screens\Buttons\Button_Opening.cs" />
+     <Compile Include="Assets\Scripts\Screens\Screen_Slide.cs" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Plugins\XInputDotNet\MITLicense.txt" />

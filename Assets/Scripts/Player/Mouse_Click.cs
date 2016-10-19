@@ -1,0 +1,86 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Mouse_Click : MonoBehaviour {
+
+    public Manager_Input m_InputManager;
+
+    public GameObject m_MainScreen;
+    public GameObject m_RessourcesScore;
+    public int m_ClickGain;
+
+    int m_nbOpenedButtons;
+
+    bool m_isClickedList = false;
+    bool m_isClickedRP = false;
+
+    int m_Score;
+
+    void Update ()
+    {
+        if (Input.GetMouseButtonDown(0))
+            m_InputManager.RayCast();
+            
+    }
+
+    public void CheckRayCast()
+    {
+        if (m_InputManager.m_FoundTag == "TriggerList" || m_InputManager.m_FoundTag == "TriggerRP")
+        {
+
+
+
+            #region Onglets
+            if (m_InputManager.m_FoundTag == "TriggerList")
+            {
+                if (m_isClickedList == false)
+                {
+                    m_MainScreen.GetComponent<Screen_Slide>().LerpList();
+                    m_isClickedList = true;
+                }
+
+                else
+                {
+                    m_MainScreen.GetComponent<Screen_Slide>().LerpMain();
+                    m_isClickedList = false;
+                }
+
+
+            }
+
+            if (m_InputManager.m_FoundTag == "TriggerRP")
+            {
+                if (m_isClickedRP == false)
+                {
+                    m_MainScreen.GetComponent<Screen_Slide>().LerpRP();
+                    m_isClickedRP = true;
+                }
+
+                else
+                {
+                    m_MainScreen.GetComponent<Screen_Slide>().LerpMain();
+                    m_isClickedRP = false;
+                }
+            }
+            #endregion
+        }
+
+
+        #region Buttons
+
+        if (m_InputManager.m_FoundTag == "Ressources" || m_InputManager.m_FoundTag == "Potions" || m_InputManager.m_FoundTag == "Bonus" || m_InputManager.m_FoundTag == "StockEx")
+        {
+            m_InputManager.m_ObjectMet.GetComponent<Button_Opening>().Clicked();
+        }
+
+        if (m_InputManager.m_FoundTag == "ClickArea")
+        {
+            m_RessourcesScore.GetComponent<Manager_Score>().ChangeScore(m_ClickGain);
+            m_InputManager.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
+
+        }
+
+        #endregion
+    }
+}
+
