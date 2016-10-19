@@ -62,20 +62,20 @@
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
  </Reference>
- <Reference Include="XInputDotNetPure">
- <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
+ <Reference Include="DOTween">
+ <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
  <Reference Include="DOTween43">
  <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/Demigiant/DOTween/DOTween43.dll</HintPath>
  </Reference>
+ <Reference Include="DOTween46">
+ <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+ </Reference>
  <Reference Include="DOTween50">
  <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/Demigiant/DOTween/DOTween50.dll</HintPath>
  </Reference>
- <Reference Include="DOTween">
- <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
- </Reference>
- <Reference Include="DOTween46">
- <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/Demigiant/DOTween/DOTween46.dll</HintPath>
+ <Reference Include="XInputDotNetPure">
+ <HintPath>C:/Users/c.blondy/Documents/GitHub/Clicker_Alchemist/Assets/Plugins/x86_64/XInputDotNetPure.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -57,13 +57,27 @@ public class Mouse_Click : MonoBehaviour {
         }
         #endregion
 
+        #region Buttons
+
         if (m_InputManager.m_FoundTag == "Ressources")
-            Debug.Log("hellowowowowowow");
+        {
+            m_InputManager.m_ObjectMet.GetComponent<Button_Ressources>().Clicked();
+        }
+
+        if (m_InputManager.m_FoundTag == "Potions")
+        {
+            m_InputManager.m_ObjectMet.GetComponent<Button_Potions>().Clicked();
+        }
+
 
         if (m_InputManager.m_FoundTag == "ClickArea")
         {
             m_RessourcesScore.GetComponent<Manager_Score>().ChangeScore(m_ClickGain);
+            m_InputManager.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
+
         }
+
+        #endregion
     }
 }
 
