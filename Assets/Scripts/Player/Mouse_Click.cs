@@ -33,7 +33,7 @@ public class Mouse_Click : MonoBehaviour {
 
     public void CheckRayCast()
     {
-
+        #region Onglets
         if (m_InputManager.m_FoundTag == "TriggerList" || m_InputManager.m_FoundTag == "TriggerRP")
         {
 
@@ -61,8 +61,7 @@ public class Mouse_Click : MonoBehaviour {
 
             #endregion
 
-
-            #region Onglets
+            #region OngletsOpening
             if (m_InputManager.m_FoundTag == "TriggerList")
             {
                 if (m_isClickedList == false)
@@ -97,6 +96,7 @@ public class Mouse_Click : MonoBehaviour {
             #endregion
 
         }
+        #endregion
 
         #region Buttons
 
@@ -109,6 +109,15 @@ public class Mouse_Click : MonoBehaviour {
         {
             m_RessourcesScore.GetComponent<Manager_Score>().ChangeScore(m_ClickGain);
             m_InputManager.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
+
+        }
+
+        #endregion
+
+        #region Liste
+
+        if(m_InputManager.m_FoundTag == "Movable")
+        {
 
         }
 
