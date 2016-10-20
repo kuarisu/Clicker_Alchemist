@@ -3,10 +3,12 @@ using System.Collections;
 
 public class Button_Opening : MonoBehaviour {
 
+    public Mouse_Click m_MouseClick;
     public GameObject m_Screen;
     [SerializeField]
     Animator m_An;
-    bool m_isOpened = false;
+    [HideInInspector]
+    public bool m_isOpened = false;
 
     void Start()
     {
@@ -18,10 +20,18 @@ public class Button_Opening : MonoBehaviour {
     {
         m_Screen.SetActive(true);
         if (m_isOpened == false)
+        {
+            m_MouseClick.m_NbBOpened++;
             Opening();
 
+        }
+
         else
+        {
+            m_MouseClick.m_NbBOpened--;
             Closing();
+
+        }
 
     }
 
@@ -29,10 +39,13 @@ public class Button_Opening : MonoBehaviour {
     {
         m_An.SetBool("IsOpen", true);
         m_isOpened = true;
+
+
     }
     public void Closing()
     {
         m_An.SetBool("IsOpen", false);
         m_isOpened = false;
+
     }
 }

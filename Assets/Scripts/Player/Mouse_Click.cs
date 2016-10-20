@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Mouse_Click : MonoBehaviour {
 
@@ -7,27 +8,58 @@ public class Mouse_Click : MonoBehaviour {
 
     public GameObject m_MainScreen;
     public GameObject m_RessourcesScore;
+
+    [HideInInspector]
+    public int m_NbBOpened = 0;
     public int m_ClickGain;
 
-    int m_nbOpenedButtons;
+    public List<Button_Opening> m_ButtonList = new List<Button_Opening>();
 
     bool m_isClickedList = false;
     bool m_isClickedRP = false;
 
     int m_Score;
+    
+    void Awake()
+    {
+        m_NbBOpened = 0;
+    }
 
     void Update ()
     {
         if (Input.GetMouseButtonDown(0))
             m_InputManager.RayCast();
-            
     }
 
     public void CheckRayCast()
     {
+
         if (m_InputManager.m_FoundTag == "TriggerList" || m_InputManager.m_FoundTag == "TriggerRP")
         {
 
+            #region ClosingButtons
+            if(m_NbBOpened != 0)
+            {
+                Debug.Log("NbOpened " + m_NbBOpened);
+                while (m_NbBOpened > 0)
+                {
+
+                    foreach (Button_Opening Buttons in m_ButtonList)
+                    {
+                        if (Buttons.GetComponent<Button_Opening>().m_isOpened == true)
+                        {
+                            Buttons.GetComponent<Button_Opening>().Closing();
+                            m_NbBOpened--;
+                        }
+                    }
+
+                }
+
+            }
+
+
+
+            #endregion
 
 
             #region Onglets
@@ -63,8 +95,8 @@ public class Mouse_Click : MonoBehaviour {
                 }
             }
             #endregion
-        }
 
+        }
 
         #region Buttons
 
