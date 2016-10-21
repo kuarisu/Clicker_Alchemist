@@ -46,8 +46,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Classes\Classe_RayCast.cs" />
+     <Compile Include="Assets\Scripts\Liste_EmployArea.cs" />
      <Compile Include="Assets\Scripts\Liste_ObjMoveable.cs" />
-     <Compile Include="Assets\Scripts\Manager\Manager_Input.cs" />
+     <Compile Include="Assets\Scripts\Manager\Manager_Raycast.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Score.cs" />
      <Compile Include="Assets\Scripts\Player\Mouse_Click.cs" />
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_ClickArea.cs" />

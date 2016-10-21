@@ -3,47 +3,77 @@ using System.Collections;
 
 public class Liste_ObjMoveable : MonoBehaviour {
 
-    public bool Paysan = false;
-    public bool Apprenti = false;
-    public bool Alchimiste = false;
-    public bool ChefGuild = false;
+    public GameObject m_Manager;
+       // m_MouseClick; //To access data from MouseClick
+   // public Manager_Raycast
 
-    public Mouse_Click m_MouseClick;
+    [HideInInspector]
+    public bool m_Dragged = false; //Used to know if the Object is moving or not
+    [HideInInspector]
+    public bool m_Movable = true; //Used to know if the Object can move or not (if Postulant: can move, if Employé: can't move) 
+    [HideInInspector]
+    public Vector3 m_NewPos; //Used to update the position of the object while moving
 
-    [SerializeField]
-    public bool m_Dragged = false;
+    [HideInInspector]
+    public enum Postulant
+    {
+        Paysan,
+        Apprenti,
+        Alchemiste,
+        ChefGuilde
+    } //For GD, to choose the type
 
-    int m_isPaysan = 1;
-    int m_isApprenti = 2;
-    int m_isAlchimiste = 3;
-    int m_isChefGuild = 4;
+    public Postulant m_PostulanType; //To show the enum in Inspector
 
-    [SerializeField]
-    public int m_Identity = 0;
+    Vector3 m_PreviousPos; //Used to stock the origine position
 
     void Start()
     {
-        if (Paysan == true)
-            m_Identity = m_isPaysan;
+        StockPos();
+        m_Dragged = false;
+    }
 
-        if (Apprenti == true)
-            m_Identity = m_isApprenti;
-
-        if (Alchimiste == true)
-            m_Identity = m_isAlchimiste;
-
-        if (ChefGuild == true)
-            m_Identity = m_isChefGuild;
+    void StockPos()
+    {
+        m_PreviousPos = this.transform.position;
     }
 
     public IEnumerator isMoving()
     {
-        while(m_Dragged == true)
+        this.gameObject.layer = 2;
+
+        while (m_Dragged == true)
         {
+            m_Manager.GetComponent<Manager_Raycast>().UpdateRayCast();
+            gameObject.transform.position = m_NewPos;
             yield return new WaitForEndOfFrame();
         }
+        this.gameObject.layer = 0;
+    }
 
+    public void BecomeEmploye()
+    {
+        Debug.Log("I'm an employee now");
+        if (m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Count != 0)
+        {
+            foreach (GameObject Employe in m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea)
+                Destroy(Employe);
 
+            m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Clear();
+        }
+
+        transform.position = m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.transform.position;
+        StockPos();
+        m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Add(this.gameObject);
+        m_Manager.GetComponent<Mouse_Click>().m_stockedPostulant = null;
+        m_Movable = false;
+    }
+
+    public void ResetPost()
+    {
+        Debug.Log("Back to position !");
+        transform.position = m_PreviousPos;
+        m_Manager.GetComponent<Mouse_Click>().m_stockedPostulant = null;
     }
 
 }

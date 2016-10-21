@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Mouse_Click : MonoBehaviour {
 
-    public Manager_Input m_InputManager;
+    public Manager_Raycast m_InputManager;
 
     public GameObject m_MainScreen;
     public GameObject m_RessourcesScore;
@@ -18,6 +18,9 @@ public class Mouse_Click : MonoBehaviour {
     bool m_isClickedList = false;
     bool m_isClickedRP = false;
 
+    [HideInInspector]
+    public GameObject m_stockedPostulant;
+
     int m_Score;
     
     void Awake()
@@ -29,6 +32,12 @@ public class Mouse_Click : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
             m_InputManager.RayCast();
+
+        if (m_stockedPostulant != null && Input.GetMouseButtonUp(0) && m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged == true)
+        {
+            m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged = false;
+            m_InputManager.RayCastUp();
+        }
     }
 
     public void CheckRayCast()
@@ -118,10 +127,39 @@ public class Mouse_Click : MonoBehaviour {
 
         if(m_InputManager.m_FoundTag == "Movable")
         {
+            m_stockedPostulant = m_InputManager.m_ObjectMet;
 
+            if (m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Movable == true)
+            {
+                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged = true;
+                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().StartCoroutine("isMoving");
+            }
         }
 
         #endregion
+        
+    }
+
+    public void CheckRayCastUp()
+    {
+        if (m_stockedPostulant != null && m_InputManager.m_FoundTag == "Employe")
+        {
+            if ((int)m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_PostulanType == (int)m_InputManager.m_ObjectMet.GetComponent<Liste_EmployArea>().m_AreaType)
+            {
+                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().BecomeEmploye();
+            }
+
+            else
+            {
+                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().ResetPost();
+
+            }
+
+        }
+        else if (m_stockedPostulant != null && m_InputManager.m_FoundTag != "Employe")
+        {
+            m_stockedPostulant.GetComponent<Liste_ObjMoveable>().ResetPost();
+        }
     }
 }
 
