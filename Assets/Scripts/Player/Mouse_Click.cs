@@ -11,7 +11,6 @@ public class Mouse_Click : MonoBehaviour {
 
     [HideInInspector]
     public int m_NbBOpened = 0;
-    public int m_ClickGain;
 
     public List<Button_Opening> m_ButtonList = new List<Button_Opening>();
 
@@ -20,6 +19,8 @@ public class Mouse_Click : MonoBehaviour {
 
     [HideInInspector]
     public GameObject m_stockedPostulant;
+    [HideInInspector]
+    public int m_NbTypePlante;
 
     int m_Score;
     
@@ -49,7 +50,6 @@ public class Mouse_Click : MonoBehaviour {
             #region ClosingButtons
             if(m_NbBOpened != 0)
             {
-                Debug.Log("NbOpened " + m_NbBOpened);
                 while (m_NbBOpened > 0)
                 {
 
@@ -116,7 +116,7 @@ public class Mouse_Click : MonoBehaviour {
 
         if (m_InputManager.m_FoundTag == "ClickArea")
         {
-            m_RessourcesScore.GetComponent<Manager_Score>().ChangeScore(m_ClickGain);
+            m_RessourcesScore.GetComponent<Manager_Score>().ChangeScore();
             m_InputManager.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
 
         }
@@ -137,7 +137,15 @@ public class Mouse_Click : MonoBehaviour {
         }
 
         #endregion
-        
+
+        #region TypePlantes
+        if (m_InputManager.m_FoundTag == "Plante01")
+        {
+            m_RessourcesScore.GetComponent<Manager_Score>().m_TypePlant = (int)m_InputManager.m_ObjectMet.GetComponent<PlanteType>().m_TypePlante;
+            m_RessourcesScore.GetComponent<Manager_Score>().ChangeRessources();
+        }
+        #endregion
+
     }
 
     public void CheckRayCastUp()

@@ -3,9 +3,13 @@ using System.Collections;
 
 public class Manager_Raycast : MonoBehaviour
 {
+    [HideInInspector]
     public Classe_RayCast m_Instance;
+    [HideInInspector]
     public Mouse_Click m_MouseClick;
+    [HideInInspector]
     public string m_FoundTag;
+    [HideInInspector]
     public GameObject m_ObjectMet;
 
     void Start()
