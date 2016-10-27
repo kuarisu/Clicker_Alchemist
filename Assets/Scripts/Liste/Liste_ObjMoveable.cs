@@ -44,7 +44,7 @@ public class Liste_ObjMoveable : MonoBehaviour {
 
         while (m_Dragged == true)
         {
-            m_Manager.GetComponent<Manager_Raycast>().UpdateRayCast();
+            Manager_Raycast.Instance.UpdateRayCast();
             gameObject.transform.position = m_NewPos;
             yield return new WaitForEndOfFrame();
         }
@@ -54,18 +54,18 @@ public class Liste_ObjMoveable : MonoBehaviour {
     public void BecomeEmploye()
     {
         Debug.Log("I'm an employee now");
-        if (m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Count != 0)
+        if (Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Count != 0)
         {
-            foreach (GameObject Employe in m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea)
+            foreach (GameObject Employe in Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea)
                 Destroy(Employe);
 
-            m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Clear();
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Clear();
         }
 
-        transform.position = m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.transform.position;
+        transform.position = Manager_Raycast.Instance.m_ObjectMet.transform.position;
         StockPos();
-        m_Manager.GetComponent<Manager_Raycast>().m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Add(this.gameObject);
-        m_Manager.GetComponent<Mouse_Click>().m_stockedPostulant = null;
+        Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Add(this.gameObject);
+        m_Manager.GetComponent<Manager_Input>().m_stockedPostulant = null;
         m_Movable = false;
     }
 
@@ -73,7 +73,7 @@ public class Liste_ObjMoveable : MonoBehaviour {
     {
         Debug.Log("Back to position !");
         transform.position = m_PreviousPos;
-        m_Manager.GetComponent<Mouse_Click>().m_stockedPostulant = null;
+        m_Manager.GetComponent<Manager_Input>().m_stockedPostulant = null;
     }
 
 }

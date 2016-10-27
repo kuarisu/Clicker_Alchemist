@@ -6,11 +6,22 @@ public class Manager_Raycast : MonoBehaviour
     [HideInInspector]
     public Classe_RayCast m_Instance;
     [HideInInspector]
-    public Mouse_Click m_MouseClick;
-    [HideInInspector]
     public string m_FoundTag;
     [HideInInspector]
     public GameObject m_ObjectMet;
+
+    public static Manager_Raycast Instance;
+    private void Awake()
+    {
+        if (Manager_Raycast.Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        Manager_Raycast.Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     void Start()
     {
@@ -30,7 +41,7 @@ public class Manager_Raycast : MonoBehaviour
             m_Instance.m_ObjectMet = m_ObjectMet;
             m_Instance.m_tag = m_FoundTag;
 
-            m_MouseClick.CheckRayCast();
+            Manager_Input.Instance.CheckRayCast();
 
         }
 
@@ -49,7 +60,7 @@ public class Manager_Raycast : MonoBehaviour
             m_Instance.m_ObjectMet = m_ObjectMet;
             m_Instance.m_tag = m_FoundTag;
 
-            m_MouseClick.CheckRayCastUp();
+            Manager_Input.Instance.CheckRayCastUp();
 
         }
 
@@ -63,7 +74,7 @@ public class Manager_Raycast : MonoBehaviour
 
         if (Physics.Raycast(_ray, out m_HitUpdateRC))
         {
-            m_MouseClick.m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_NewPos = m_HitUpdateRC.point;
+            Manager_Input.Instance.m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_NewPos = m_HitUpdateRC.point;
         }
 
     }

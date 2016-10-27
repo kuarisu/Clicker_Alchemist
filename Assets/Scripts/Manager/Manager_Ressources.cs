@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Manager_Score : MonoBehaviour
+public class Manager_Ressources : MonoBehaviour
 {
     [HideInInspector]
     public int m_PreviousScoreP1 = 0;
@@ -14,30 +14,52 @@ public class Manager_Score : MonoBehaviour
     [HideInInspector]
     public string m_CurrentRessource;
 
+    [HideInInspector]
+    public int m_CurrentScore;
+
     public Text m_TextPlant01;
     public Text m_TextPlant02;
     public Text m_TextPlant03;
 
-
-    public int m_ClickGainP1;
-    public int m_ClickGainP2;
-    public int m_ClickGainP3;
-
     [HideInInspector]
     public int m_TypePlant;
+
+    string m_Score01;
+    string m_Score02;
+    string m_Score03;
+
+    public static Manager_Ressources Instance;
+    private void Awake()
+    {
+        if (Manager_Ressources.Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        Manager_Ressources.Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Start()
+    {
+        m_Score01 = m_TextPlant01.text;
+        m_Score02 = m_TextPlant02.text;
+        m_Score03 = m_TextPlant03.text;
+    }
 
     public void ChangeRessources()
     {
         switch (m_TypePlant)
         {
             case 0:
-                m_CurrentRessource = m_TextPlant01.text;
+                m_CurrentRessource = m_Score01;
                 break;
             case 1:
-                m_CurrentRessource = m_TextPlant02.text;
+                m_CurrentRessource = m_Score02;
                 break;
             case 2:
-                m_CurrentRessource = m_TextPlant03.text;
+                m_CurrentRessource = m_Score03;
                 break;
             default:
                 break;
@@ -48,31 +70,24 @@ public class Manager_Score : MonoBehaviour
 
     public void ChangeScore()
     {
-        int _currentScoreP1;
-        int _currentScoreP2;
-        int _currentScoreP3;
-
+        
         switch (m_TypePlant)
         {
             case 0:
-                _currentScoreP1 = m_PreviousScoreP1 + m_ClickGainP1;
-                m_TextPlant01.text = m_CurrentRessource + _currentScoreP1;
-                m_PreviousScoreP1 = _currentScoreP1;
+                m_TextPlant01.text = m_CurrentRessource + m_CurrentScore;
                 break;
             case 1:
-                _currentScoreP2 = m_PreviousScoreP2 + m_ClickGainP2;
-                m_TextPlant02.text = m_CurrentRessource + _currentScoreP2;
-                m_PreviousScoreP2 = _currentScoreP2;
+                m_TextPlant02.text = m_CurrentRessource + m_CurrentScore;
                 break;
             case 2:
-                _currentScoreP3 = m_PreviousScoreP3 + m_ClickGainP3;
-                m_TextPlant03.text = m_CurrentRessource + _currentScoreP3;
-                m_PreviousScoreP3 = _currentScoreP3;
+                m_TextPlant03.text = m_CurrentRessource + m_CurrentScore;
                 break;
             default:
                 break;
 
         }
     }
+
+
 }
 

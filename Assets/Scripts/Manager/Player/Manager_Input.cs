@@ -2,12 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Mouse_Click : MonoBehaviour {
+public class Manager_Input : MonoBehaviour {
 
-    public Manager_Raycast m_InputManager;
+    public static Manager_Input Instance;
 
     public GameObject m_MainScreen;
-    public GameObject m_RessourcesScore;
 
     [HideInInspector]
     public int m_NbBOpened = 0;
@@ -22,29 +21,41 @@ public class Mouse_Click : MonoBehaviour {
     [HideInInspector]
     public int m_NbTypePlante;
 
+    public GameObject m_Plante;
+
     int m_Score;
-    
-    void Awake()
+
+
+    private void Awake()
     {
+        if (Manager_Input.Instance != null)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        Manager_Input.Instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
         m_NbBOpened = 0;
     }
 
     void Update ()
     {
         if (Input.GetMouseButtonDown(0))
-            m_InputManager.RayCast();
+            Manager_Raycast.Instance.RayCast();
 
         if (m_stockedPostulant != null && Input.GetMouseButtonUp(0) && m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged == true)
         {
             m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged = false;
-            m_InputManager.RayCastUp();
+            Manager_Raycast.Instance.RayCastUp();
         }
     }
 
     public void CheckRayCast()
     {
         #region Onglets
-        if (m_InputManager.m_FoundTag == "TriggerList" || m_InputManager.m_FoundTag == "TriggerRP")
+        if (Manager_Raycast.Instance.m_FoundTag == "TriggerList" || Manager_Raycast.Instance.m_FoundTag == "TriggerRP")
         {
 
             #region ClosingButtons
@@ -71,7 +82,7 @@ public class Mouse_Click : MonoBehaviour {
             #endregion
 
             #region OngletsOpening
-            if (m_InputManager.m_FoundTag == "TriggerList")
+            if (Manager_Raycast.Instance.m_FoundTag == "TriggerList")
             {
                 if (m_isClickedList == false)
                 {
@@ -88,7 +99,7 @@ public class Mouse_Click : MonoBehaviour {
 
             }
 
-            if (m_InputManager.m_FoundTag == "TriggerRP")
+            if (Manager_Raycast.Instance.m_FoundTag == "TriggerRP")
             {
                 if (m_isClickedRP == false)
                 {
@@ -109,15 +120,15 @@ public class Mouse_Click : MonoBehaviour {
 
         #region Buttons
 
-        if (m_InputManager.m_FoundTag == "Ressources" || m_InputManager.m_FoundTag == "Potions" || m_InputManager.m_FoundTag == "Bonus" || m_InputManager.m_FoundTag == "StockEx")
+        if (Manager_Raycast.Instance.m_FoundTag == "Ressources" || Manager_Raycast.Instance.m_FoundTag == "Potions" || Manager_Raycast.Instance.m_FoundTag == "Bonus" || Manager_Raycast.Instance.m_FoundTag == "StockEx")
         {
-            m_InputManager.m_ObjectMet.GetComponent<Button_Opening>().Clicked();
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Button_Opening>().Clicked();
         }
-
-        if (m_InputManager.m_FoundTag == "ClickArea")
+        else if (Manager_Raycast.Instance.m_FoundTag == "ClickArea")
         {
-            m_RessourcesScore.GetComponent<Manager_Score>().ChangeScore();
-            m_InputManager.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
+            if (m_Plante!=null)
+                m_Plante.GetComponent<Plante_Type>().ScoreActif(m_Plante.GetComponent<Plante_Type>().m_ClickGain);
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
 
         }
 
@@ -125,9 +136,9 @@ public class Mouse_Click : MonoBehaviour {
 
         #region Liste
 
-        if(m_InputManager.m_FoundTag == "Movable")
+        if(Manager_Raycast.Instance.m_FoundTag == "Movable")
         {
-            m_stockedPostulant = m_InputManager.m_ObjectMet;
+            m_stockedPostulant = Manager_Raycast.Instance.m_ObjectMet;
 
             if (m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Movable == true)
             {
@@ -139,20 +150,34 @@ public class Mouse_Click : MonoBehaviour {
         #endregion
 
         #region TypePlantes
-        if (m_InputManager.m_FoundTag == "Plante01")
+        if (Manager_Raycast.Instance.m_FoundTag == "Plante")
         {
-            m_RessourcesScore.GetComponent<Manager_Score>().m_TypePlant = (int)m_InputManager.m_ObjectMet.GetComponent<PlanteType>().m_TypePlante;
-            m_RessourcesScore.GetComponent<Manager_Score>().ChangeRessources();
+           m_Plante = Manager_Raycast.Instance.m_ObjectMet;
+           Manager_Ressources.Instance.m_TypePlant = (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Type>().m_TypePlante;
+           Manager_Ressources.Instance.ChangeRessources();
         }
         #endregion
+
+        if(Manager_Raycast.Instance.m_FoundTag == "UpgradeMult")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpMult>().Action();
+        }
+        if (Manager_Raycast.Instance.m_FoundTag == "UpgradeAdd")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpAdd>().Action();
+        }
+        if (Manager_Raycast.Instance.m_FoundTag == "UpgradePercent")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpPerCent>().Action();
+        }
 
     }
 
     public void CheckRayCastUp()
     {
-        if (m_stockedPostulant != null && m_InputManager.m_FoundTag == "Employe")
+        if (m_stockedPostulant != null && Manager_Raycast.Instance.m_FoundTag == "Employe")
         {
-            if ((int)m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_PostulanType == (int)m_InputManager.m_ObjectMet.GetComponent<Liste_EmployArea>().m_AreaType)
+            if ((int)m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_PostulanType == (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_AreaType)
             {
                 m_stockedPostulant.GetComponent<Liste_ObjMoveable>().BecomeEmploye();
             }
@@ -164,7 +189,7 @@ public class Mouse_Click : MonoBehaviour {
             }
 
         }
-        else if (m_stockedPostulant != null && m_InputManager.m_FoundTag != "Employe")
+        else if (m_stockedPostulant != null && Manager_Raycast.Instance.m_FoundTag != "Employe")
         {
             m_stockedPostulant.GetComponent<Liste_ObjMoveable>().ResetPost();
         }

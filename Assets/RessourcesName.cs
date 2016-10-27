@@ -8,7 +8,7 @@ public class RessourcesName : MonoBehaviour {
 
     public Text m_NameResTxt;
 
-    void Start()
+    void Awake()
     {
         m_NameResTxt = GetComponent<Text>();
         m_NameResTxt.text = m_NameRessources;

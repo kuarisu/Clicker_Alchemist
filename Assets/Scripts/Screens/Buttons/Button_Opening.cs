@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Button_Opening : MonoBehaviour {
 
-    public Mouse_Click m_MouseClick;
     public GameObject m_Screen;
     [SerializeField]
     Animator m_An;
@@ -21,14 +20,14 @@ public class Button_Opening : MonoBehaviour {
         m_Screen.SetActive(true);
         if (m_isOpened == false)
         {
-            m_MouseClick.m_NbBOpened++;
+            Manager_Input.Instance.m_NbBOpened++;
             Opening();
 
         }
 
         else
         {
-            m_MouseClick.m_NbBOpened--;
+            Manager_Input.Instance.m_NbBOpened--;
             Closing();
 
         }
