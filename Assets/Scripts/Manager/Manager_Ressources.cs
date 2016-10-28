@@ -10,6 +10,8 @@ public class Manager_Ressources : MonoBehaviour
     public int m_PreviousScoreP2 = 0;
     [HideInInspector]
     public int m_PreviousScoreP3 = 0;
+    [HideInInspector]
+    public int m_PreviousScoreGold = 0;
 
     [HideInInspector]
     public string m_CurrentRessource;
@@ -17,9 +19,13 @@ public class Manager_Ressources : MonoBehaviour
     [HideInInspector]
     public int m_CurrentScore;
 
+    [HideInInspector]
+    public int m_CurrentGoldScore;
+
     public Text m_TextPlant01;
     public Text m_TextPlant02;
     public Text m_TextPlant03;
+    public Text m_TextGold;
 
     [HideInInspector]
     public int m_TypePlant;
@@ -27,6 +33,7 @@ public class Manager_Ressources : MonoBehaviour
     string m_Score01;
     string m_Score02;
     string m_Score03;
+    string m_ScoreGolde;
 
     public static Manager_Ressources Instance;
     private void Awake()
@@ -46,6 +53,7 @@ public class Manager_Ressources : MonoBehaviour
         m_Score01 = m_TextPlant01.text;
         m_Score02 = m_TextPlant02.text;
         m_Score03 = m_TextPlant03.text;
+        m_ScoreGolde = m_TextGold.text;
     }
 
     public void ChangeRessources()
@@ -88,6 +96,9 @@ public class Manager_Ressources : MonoBehaviour
         }
     }
 
-
+    public void ChangeGoldScore()
+    {
+        m_TextGold.text = m_ScoreGolde + m_CurrentGoldScore;
+    }
 }
 

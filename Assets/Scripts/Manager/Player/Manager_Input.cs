@@ -149,27 +149,43 @@ public class Manager_Input : MonoBehaviour {
 
         #endregion
 
-        #region TypePlantes
+        #region Plantes
         if (Manager_Raycast.Instance.m_FoundTag == "Plante")
         {
            m_Plante = Manager_Raycast.Instance.m_ObjectMet;
            Manager_Ressources.Instance.m_TypePlant = (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Type>().m_TypePlante;
            Manager_Ressources.Instance.ChangeRessources();
         }
+
+
+        if (Manager_Raycast.Instance.m_FoundTag == "Selling")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Selling>().Selling();
+        }
         #endregion
 
-        if(Manager_Raycast.Instance.m_FoundTag == "UpgradeMult")
+        #region UpGrade
+        if (Manager_Raycast.Instance.m_FoundTag == "UpgradeMult")
         {
+
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpMult>().Action();
+            Debug.Log(Manager_Gold.Instance.m_FinalScore);
         }
+
         if (Manager_Raycast.Instance.m_FoundTag == "UpgradeAdd")
         {
+
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpAdd>().Action();
+            Debug.Log(Manager_Gold.Instance.m_FinalScore);
         }
+
         if (Manager_Raycast.Instance.m_FoundTag == "UpgradePercent")
         {
+
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpPerCent>().Action();
+            Debug.Log(Manager_Gold.Instance.m_FinalScore);
         }
+        #endregion
 
     }
 

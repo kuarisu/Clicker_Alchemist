@@ -1,9 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class Upgrade_UpAdd : MonoBehaviour
 {
-    public string m_Name;
+    public Text m_TextName;
+    public Text m_TextDescription;
+    public Text m_TextPrice;
+
+    public string m_NameUp;
     public string m_Description;
     public int m_Addition;
     public int m_Price;
@@ -28,40 +33,55 @@ public class Upgrade_UpAdd : MonoBehaviour
     public Impact m_Impact;
 
 
+    void Start()
+    {
+        m_TextName.text = m_NameUp;
+        m_TextDescription.text = m_Description;
+        m_TextPrice.text = m_Price.ToString();
+    }
+
     public void Action()
     {
-        switch (m_Impact)
+        if (m_Price <= Manager_Gold.Instance.m_FinalScore)
         {
-            case Impact.Actif:
-                ActionOnActif();
-                break;
-            case Impact.Passif:
-                ActionOnPassif();
-                break;
-            case Impact.Employe:
-                ActionOnEmploye();
-                break;
-            case Impact.OrActive:
-                ActionOnOrActive();
-                break;
-            case Impact.OrPassive:
-                ActionOnOrPassive();
-                break;
-            case Impact.Bourse:
-                ActionOnBourse();
-                break;
+            Manager_Sparing.Instance.Sparing(m_Price);
+
+            switch (m_Impact)
+            {
+                case Impact.Actif:
+                    ActionOnActif();
+                    break;
+                case Impact.Passif:
+                    ActionOnPassif();
+                    break;
+                case Impact.Employe:
+                    ActionOnEmploye();
+                    break;
+                case Impact.OrActive:
+                    ActionOnOrActive();
+                    break;
+                case Impact.OrPassive:
+                    ActionOnOrPassive();
+                    break;
+                case Impact.Bourse:
+                    ActionOnBourse();
+                    break;
+            }
+
+            LevelUp();
         }
     }
 
+    #region Actions
     void ActionOnActif()
     {
-        m_TypePlant.GetComponent<Plante_Type>().m_MultActif += m_Addition;
+        m_TypePlant.GetComponent<Plante_Type>().m_BonusActif += m_Addition;
     }
 
 
     void ActionOnPassif()
     {
-        m_TypePlant.GetComponent<Plante_Type>().m_MultPassif += m_Addition;
+        m_TypePlant.GetComponent<Plante_Type>().m_BonusPassif += m_Addition;
     }
 
     void ActionOnEmploye()
@@ -79,6 +99,16 @@ public class Upgrade_UpAdd : MonoBehaviour
     void ActionOnBourse()
     {
         //Action sur la bourse
+    }
+    #endregion
+
+    void LevelUp()
+    {
+        m_Price *= 10;
+        m_Addition += m_Addition;
+        m_Level++;
+
+        m_TextPrice.text = m_Price.ToString();
     }
 
 }

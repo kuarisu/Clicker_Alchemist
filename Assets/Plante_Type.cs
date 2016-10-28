@@ -29,6 +29,9 @@ public class Plante_Type : MonoBehaviour {
     [HideInInspector]
     public int m_ScorePassif = 0;
 
+    [HideInInspector]
+    public int m_FinalScore = 0;
+
     void Awake()
     {
         m_MultActif = 1;
@@ -38,15 +41,22 @@ public class Plante_Type : MonoBehaviour {
 
     public void ScoreActif(int _score)
     {
-        m_ScoreActif = (m_ScoreActif + _score + m_BonusActif) * m_MultActif;
-        Manager_Ressources.Instance.m_CurrentScore = m_ScoreActif;
-        Manager_Ressources.Instance.ChangeScore();
+        m_ScoreActif = m_FinalScore + (_score + m_BonusActif) * m_MultActif ;
+        Debug.Log(m_MultActif);
+        FinalScore();
  
     }
 
     public void ScorePassif(int _score)
     {
-        m_ScorePassif = (m_ScorePassif + _score + m_BonusPassif) * m_MultPassif;
+        m_ScorePassif = m_FinalScore + (_score + m_BonusPassif) * m_MultPassif;
+    }
+
+    public void FinalScore()
+    {
+        m_FinalScore = m_ScoreActif + m_ScorePassif;
+        Manager_Ressources.Instance.m_CurrentScore = m_FinalScore;
+        Manager_Ressources.Instance.ChangeScore();
     }
 
 }
