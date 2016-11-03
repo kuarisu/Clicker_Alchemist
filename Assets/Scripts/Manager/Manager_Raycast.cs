@@ -72,9 +72,9 @@ public class Manager_Raycast : MonoBehaviour
         Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit m_HitUpdateRC;
 
-        if (Physics.Raycast(_ray, out m_HitUpdateRC))
+        if (Physics.Raycast(_ray, out m_HitUpdateRC) && Manager_Input.Instance.m_StockedObject.GetComponent<Objects_Movable>().m_TypeMovableObject == Objects_Movable.Type.Postulant)
         {
-            Manager_Input.Instance.m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_NewPos = m_HitUpdateRC.point;
+            Manager_Input.Instance.m_StockedObject.GetComponent<Objects_Movable>().m_NewPos = m_HitUpdateRC.point;
         }
 
     }

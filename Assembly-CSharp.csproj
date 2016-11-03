@@ -45,15 +45,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Objects_Movable.cs" />
+     <Compile Include="Assets\Plante_Selling.cs" />
+     <Compile Include="Assets\Plante_Type.cs" />
+     <Compile Include="Assets\Request_Impact.cs" />
+     <Compile Include="Assets\RessourcesName.cs" />
      <Compile Include="Assets\Scripts\Classes\Classe_RayCast.cs" />
-     <Compile Include="Assets\Scripts\Liste_EmployArea.cs" />
-     <Compile Include="Assets\Scripts\Liste_ObjMoveable.cs" />
+     <Compile Include="Assets\Scripts\Liste\Liste_EmployArea.cs" />
+     <Compile Include="Assets\Scripts\Liste\Liste_ObjMoveable.cs" />
+     <Compile Include="Assets\Scripts\Manager\Manager_Gold.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Raycast.cs" />
-     <Compile Include="Assets\Scripts\Manager\Manager_Score.cs" />
-     <Compile Include="Assets\Scripts\Player\Mouse_Click.cs" />
+     <Compile Include="Assets\Scripts\Manager\Manager_Ressources.cs" />
+     <Compile Include="Assets\Scripts\Manager\Manager_Sparing.cs" />
+     <Compile Include="Assets\Scripts\Manager\Player\Manager_Input.cs" />
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_ClickArea.cs" />
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_Opening.cs" />
      <Compile Include="Assets\Scripts\Screens\Screen_Slide.cs" />
+     <Compile Include="Assets\Upgrade_UpAdd.cs" />
+     <Compile Include="Assets\Upgrade_UpMult.cs" />
+     <Compile Include="Assets\Upgrade_UpPerCent.cs" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Plugins\XInputDotNet\MITLicense.txt" />

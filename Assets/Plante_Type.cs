@@ -42,7 +42,6 @@ public class Plante_Type : MonoBehaviour {
     public void ScoreActif(int _score)
     {
         m_ScoreActif = m_FinalScore + (_score + m_BonusActif) * m_MultActif ;
-        Debug.Log(m_MultActif);
         FinalScore();
  
     }

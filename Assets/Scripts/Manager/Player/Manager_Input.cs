@@ -17,7 +17,7 @@ public class Manager_Input : MonoBehaviour {
     bool m_isClickedRP = false;
 
     [HideInInspector]
-    public GameObject m_stockedPostulant;
+    public GameObject m_StockedObject;
     [HideInInspector]
     public int m_NbTypePlante;
 
@@ -45,11 +45,12 @@ public class Manager_Input : MonoBehaviour {
         if (Input.GetMouseButtonDown(0))
             Manager_Raycast.Instance.RayCast();
 
-        if (m_stockedPostulant != null && Input.GetMouseButtonUp(0) && m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged == true)
+        if (m_StockedObject != null && Input.GetMouseButtonUp(0) && m_StockedObject.GetComponent<Objects_Movable>().m_Dragged == true)
         {
-            m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged = false;
+            m_StockedObject.GetComponent<Objects_Movable>().m_Dragged = false;
             Manager_Raycast.Instance.RayCastUp();
         }
+
     }
 
     public void CheckRayCast()
@@ -138,12 +139,13 @@ public class Manager_Input : MonoBehaviour {
 
         if(Manager_Raycast.Instance.m_FoundTag == "Movable")
         {
-            m_stockedPostulant = Manager_Raycast.Instance.m_ObjectMet;
+            m_StockedObject = Manager_Raycast.Instance.m_ObjectMet;
 
-            if (m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Movable == true)
+            if (m_StockedObject.GetComponent<Objects_Movable>().m_Movable == true)
             {
-                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_Dragged = true;
-                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().StartCoroutine("isMoving");
+                m_StockedObject.GetComponent<Objects_Movable>().StockPos();
+                m_StockedObject.GetComponent<Objects_Movable>().m_Dragged = true;
+                m_StockedObject.GetComponent<Objects_Movable>().StartCoroutine("isMoving");
             }
         }
 
@@ -169,7 +171,6 @@ public class Manager_Input : MonoBehaviour {
         {
 
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpMult>().Action();
-            Debug.Log(Manager_Gold.Instance.m_FinalScore);
         }
 
         if (Manager_Raycast.Instance.m_FoundTag == "UpgradeAdd")
@@ -183,7 +184,6 @@ public class Manager_Input : MonoBehaviour {
         {
 
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpPerCent>().Action();
-            Debug.Log(Manager_Gold.Instance.m_FinalScore);
         }
         #endregion
 
@@ -191,23 +191,23 @@ public class Manager_Input : MonoBehaviour {
 
     public void CheckRayCastUp()
     {
-        if (m_stockedPostulant != null && Manager_Raycast.Instance.m_FoundTag == "Employe")
+        if (m_StockedObject != null && Manager_Raycast.Instance.m_FoundTag == "Employe")
         {
-            if ((int)m_stockedPostulant.GetComponent<Liste_ObjMoveable>().m_PostulanType == (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_AreaType)
+            if ((int)m_StockedObject.GetComponent<Liste_ObjMoveable>().m_PostulanType == (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_AreaType)
             {
-                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().BecomeEmploye();
+                m_StockedObject.GetComponent<Liste_ObjMoveable>().BecomeEmploye();
             }
 
             else
             {
-                m_stockedPostulant.GetComponent<Liste_ObjMoveable>().ResetPost();
+                m_StockedObject.GetComponent<Objects_Movable>().ResetPost();
 
             }
 
         }
-        else if (m_stockedPostulant != null && Manager_Raycast.Instance.m_FoundTag != "Employe")
+        else if (m_StockedObject != null && Manager_Raycast.Instance.m_FoundTag != "Employe")
         {
-            m_stockedPostulant.GetComponent<Liste_ObjMoveable>().ResetPost();
+            m_StockedObject.GetComponent<Objects_Movable>().ResetPost();
         }
     }
 }

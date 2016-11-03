@@ -44,7 +44,6 @@ public class Upgrade_UpMult : MonoBehaviour
         if (m_Price <= Manager_Gold.Instance.m_FinalScore)
         {
             Manager_Sparing.Instance.Sparing(m_Price);
-            Debug.Log("hello");
 
             switch (m_Impact)
             {
