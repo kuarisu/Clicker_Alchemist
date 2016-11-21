@@ -12,21 +12,21 @@ public class Screen_Slide : MonoBehaviour
     {
         transform.DOMoveX(-14.25f, 0.5f);
         m_ClickArea.transform.DOMoveX(-8f, 0.525f);
-        Invoke("SetActiveFalse", 0.3f);
+        Invoke("SetActiveFalse", 0.2f);
     }
 
     public void LerpRP()
     {
         transform.DOMoveX(14.25f, 0.5f);
         m_ClickArea.transform.DOMoveX(8f, 0.525f);
-        Invoke("SetActiveFalse", 0.3f);
+        Invoke("SetActiveFalse", 0.2f);
     }
 
     public void LerpMain()
     {
         transform.DOMoveX(0, 0.5f);
         m_ClickArea.transform.DOMoveX(0, 0.525f);
-        Invoke("SetActiveTrue", 0.3f);
+        Invoke("SetActiveTrue", 0.2f);
     }
 
     void SetActiveFalse()
