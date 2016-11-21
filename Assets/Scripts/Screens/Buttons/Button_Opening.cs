@@ -9,6 +9,8 @@ public class Button_Opening : MonoBehaviour {
     [HideInInspector]
     public bool m_isOpened = false;
 
+    public GameObject m_textForThisButton;
+
     void Start()
     {
         m_An = m_Screen.GetComponent<Animator>();
@@ -22,6 +24,8 @@ public class Button_Opening : MonoBehaviour {
         {
             Manager_Input.Instance.m_NbBOpened++;
             Opening();
+            if(m_textForThisButton != null)
+                Invoke("TextAppear", 0.2f);
 
         }
 
@@ -29,9 +33,21 @@ public class Button_Opening : MonoBehaviour {
         {
             Manager_Input.Instance.m_NbBOpened--;
             Closing();
+            if (m_textForThisButton != null)
+                Invoke("TextDisappear", 0.2f);
 
         }
 
+    }
+
+    void TextAppear()
+    {
+        m_textForThisButton.SetActive(true);
+    }
+
+    void TextDisappear ()
+    {
+        m_textForThisButton.SetActive(false);
     }
 
     public void Opening()

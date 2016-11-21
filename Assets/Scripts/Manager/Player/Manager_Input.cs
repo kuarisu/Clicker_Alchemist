@@ -7,21 +7,20 @@ public class Manager_Input : MonoBehaviour {
     public static Manager_Input Instance;
 
     public GameObject m_MainScreen;
-
-    [HideInInspector]
-    public int m_NbBOpened = 0;
+    public GameObject m_Plante;
+    public GameObject m_Selection;
 
     public List<Button_Opening> m_ButtonList = new List<Button_Opening>();
-
-    bool m_isClickedList = false;
-    bool m_isClickedRP = false;
 
     [HideInInspector]
     public GameObject m_StockedObject;
     [HideInInspector]
     public int m_NbTypePlante;
+    [HideInInspector]
+    public int m_NbBOpened = 0;
 
-    public GameObject m_Plante;
+    bool m_isClickedList = false;
+    bool m_isClickedRP = false;
 
     int m_Score;
 
@@ -62,7 +61,7 @@ public class Manager_Input : MonoBehaviour {
             #region ClosingButtons
             if(m_NbBOpened != 0)
             {
-                while (m_NbBOpened > 0)
+                while (m_NbBOpened > 1)
                 {
 
                     foreach (Button_Opening Buttons in m_ButtonList)
@@ -154,6 +153,9 @@ public class Manager_Input : MonoBehaviour {
         #region Plantes
         if (Manager_Raycast.Instance.m_FoundTag == "Plante")
         {
+            if (m_Selection.activeSelf == false)
+                m_Selection.SetActive(true);
+
            m_Plante = Manager_Raycast.Instance.m_ObjectMet;
            Manager_Ressources.Instance.m_TypePlant = (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Type>().m_TypePlante;
            Manager_Ressources.Instance.ChangeRessources();
@@ -177,7 +179,6 @@ public class Manager_Input : MonoBehaviour {
         {
 
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Upgrade_UpAdd>().Action();
-            Debug.Log(Manager_Gold.Instance.m_FinalScore);
         }
 
         if (Manager_Raycast.Instance.m_FoundTag == "UpgradePercent")

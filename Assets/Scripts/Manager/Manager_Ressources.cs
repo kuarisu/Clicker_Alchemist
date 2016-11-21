@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 using System.Collections;
 
 public class Manager_Ressources : MonoBehaviour
@@ -62,12 +63,15 @@ public class Manager_Ressources : MonoBehaviour
         {
             case 0:
                 m_CurrentRessource = m_Score01;
+                Manager_Input.Instance.m_Selection.GetComponent<Plante_SelectPosition>().Position01();
                 break;
             case 1:
                 m_CurrentRessource = m_Score02;
+                Manager_Input.Instance.m_Selection.GetComponent<Plante_SelectPosition>().Position02();
                 break;
             case 2:
                 m_CurrentRessource = m_Score03;
+                Manager_Input.Instance.m_Selection.GetComponent<Plante_SelectPosition>().Position03();
                 break;
             default:
                 break;
@@ -83,12 +87,15 @@ public class Manager_Ressources : MonoBehaviour
         {
             case 0:
                 m_TextPlant01.text = m_CurrentRessource + m_CurrentScore;
+
                 break;
             case 1:
                 m_TextPlant02.text = m_CurrentRessource + m_CurrentScore;
+
                 break;
             case 2:
                 m_TextPlant03.text = m_CurrentRessource + m_CurrentScore;
+
                 break;
             default:
                 break;
