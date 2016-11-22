@@ -23,6 +23,9 @@ public class Manager_Ressources : MonoBehaviour
     [HideInInspector]
     public int m_CurrentGoldScore;
 
+    public int m_TimePlante = 1;
+    public int m_TimeGold = 1;
+
     public Text m_TextPlant01;
     public Text m_TextPlant02;
     public Text m_TextPlant03;
@@ -55,6 +58,35 @@ public class Manager_Ressources : MonoBehaviour
         m_Score02 = m_TextPlant02.text;
         m_Score03 = m_TextPlant03.text;
         m_ScoreGolde = m_TextGold.text;
+        StartCoroutine(PassifPlante());
+        StartCoroutine(PassifGold());
+    }
+
+
+    IEnumerator PassifPlante()
+    {
+        
+        while (true)
+        {
+            if (Manager_Input.Instance.m_Plante != null)
+            {
+                Manager_Input.Instance.m_Plante.GetComponent<Plante_Type>().ScorePassif(1);
+                
+            }
+            yield return new WaitForSeconds(m_TimePlante);
+        }
+    }
+    IEnumerator PassifGold()
+    {
+
+        while (true)
+        {
+            if (Manager_Input.Instance.m_Plante != null)
+            {
+                Manager_Gold.Instance.IncreaseGoldPassif(0);
+            }
+            yield return new WaitForSeconds(m_TimeGold);
+        }
     }
 
     public void ChangeRessources()

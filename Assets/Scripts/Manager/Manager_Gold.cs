@@ -16,6 +16,8 @@ public class Manager_Gold : MonoBehaviour {
     [HideInInspector]
     public int m_FinalScore = 0;
 
+    int m_CurrentScore;
+
     private void Awake()
     {
         if (Manager_Gold.Instance != null)
@@ -31,24 +33,33 @@ public class Manager_Gold : MonoBehaviour {
     private void Start()
     {
         m_MultActif = 1;
+        m_CurrentScore = m_FinalScore;
     }
 
     public void IncreaseGoldActif(int _score)
     {
         m_ScoreActif = m_FinalScore + (_score + m_BonusActif) * m_MultActif;
-        FinalScore();
+        FinalScoreActif();
 
     }
 
     public void IncreaseGoldPassif(int _score)
     {
         m_ScorePassif = m_FinalScore + (_score + m_BonusPassif) * m_MultPassif;
+        FinalScorePassif();
     }
 
-    public void FinalScore()
+
+    public void FinalScoreActif()
     {
-        m_FinalScore = m_ScoreActif + m_ScorePassif;
-        Manager_Ressources.Instance.m_CurrentGoldScore = m_ScoreActif;
+        m_FinalScore = m_CurrentScore + m_ScoreActif;
+        Manager_Ressources.Instance.m_CurrentGoldScore = m_FinalScore;
+        Manager_Ressources.Instance.ChangeGoldScore();
+    }
+    public void FinalScorePassif()
+    {
+        m_FinalScore = m_CurrentScore + m_ScorePassif;
+        Manager_Ressources.Instance.m_CurrentGoldScore = m_FinalScore;
         Manager_Ressources.Instance.ChangeGoldScore();
     }
 }

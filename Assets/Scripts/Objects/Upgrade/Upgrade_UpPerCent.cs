@@ -10,9 +10,11 @@ public class Upgrade_UpPerCent : MonoBehaviour
 
     public string m_NameUp;
     public string m_Description;
-    public int m_PerCent;
-    public int m_Price;
-    public int m_PriceMult;
+    public int m_BasePrice;
+    public int m_BasePercent;
+
+    private int m_PerCent;
+    private int m_Price;
 
     public GameObject m_TypePlant;
 
@@ -35,6 +37,8 @@ public class Upgrade_UpPerCent : MonoBehaviour
 
     void Start()
     {
+        m_PerCent = m_BasePercent;
+        m_Price = m_BasePrice;
         m_TextName.text = m_NameUp;
         m_TextDescription.text = m_Description;
         m_TextPrice.text = m_Price.ToString();
@@ -90,11 +94,11 @@ public class Upgrade_UpPerCent : MonoBehaviour
     }
     void ActionOnOrActive()
     {
-        //Action sur l'or
+        Manager_Gold.Instance.m_MultActif += m_PerCent / 10;
     }
     void ActionOnOrPassive()
     {
-        //Action sur l'or
+        Manager_Gold.Instance.m_MultPassif += m_PerCent / 10;
     }
     void ActionOnBourse()
     {
@@ -104,11 +108,11 @@ public class Upgrade_UpPerCent : MonoBehaviour
 
     void LevelUp()
     {
-        m_Price *= 10;
-        m_PerCent += m_PerCent;
         m_Level++;
+        m_Price = (m_BasePrice * m_BasePrice) * m_Level;
+        m_PerCent = m_BasePercent * m_Level;
+
 
         m_TextPrice.text = m_Price.ToString();
-
     }
 }

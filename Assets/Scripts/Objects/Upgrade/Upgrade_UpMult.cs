@@ -10,9 +10,12 @@ public class Upgrade_UpMult : MonoBehaviour
 
     public string m_NameUp;
     public string m_Description;
-    public int m_Multiplicateur;
-    public int m_Price;
-    public int m_PriceMult;
+    public int m_BasePrice;
+    public int m_BaseMultiplicator;
+
+    private int m_Multiplicator;
+    private int m_Price;
+
 
     public GameObject m_TypePlant;
 
@@ -34,6 +37,8 @@ public class Upgrade_UpMult : MonoBehaviour
 
     void Start()
     {
+        m_Multiplicator = m_BaseMultiplicator;
+        m_Price = m_BasePrice;
         m_TextName.text = m_NameUp;
         m_TextDescription.text = m_Description;
         m_TextPrice.text = m_Price.ToString();
@@ -74,28 +79,29 @@ public class Upgrade_UpMult : MonoBehaviour
     #region Actions
     void ActionOnActif()
     {
-        m_TypePlant.GetComponent<Plante_Type>().m_MultActif += m_Multiplicateur;
+        m_TypePlant.GetComponent<Plante_Type>().m_MultActif += m_Multiplicator;
     }
 
 
     void ActionOnPassif()
     {
-        m_TypePlant.GetComponent<Plante_Type>().m_MultPassif += m_Multiplicateur;
+        m_TypePlant.GetComponent<Plante_Type>().m_MultPassif += m_Multiplicator;
     }
 
-    void ActionOnEmploye()
-    {
-        //Action sur la bourse
-    }
+   
     void ActionOnOrActive()
     {
-        //Action sur l'or
+        Manager_Gold.Instance.m_MultActif += m_Multiplicator;
     }
     void ActionOnOrPassive()
     {
-        //Action sur l'or
+        Manager_Gold.Instance.m_MultPassif += m_Multiplicator;
     }
     void ActionOnBourse()
+    {
+        //Action sur la bourse
+    }
+    void ActionOnEmploye()
     {
         //Action sur la bourse
     }
@@ -103,9 +109,10 @@ public class Upgrade_UpMult : MonoBehaviour
 
     void LevelUp()
     {
-        m_Price *= 10;
-        m_Multiplicateur += m_Multiplicateur;
         m_Level++;
+        m_Price = (m_BasePrice * m_BasePrice) * m_Level;
+        m_Multiplicator = m_BaseMultiplicator * m_Level;
+        
 
         m_TextPrice.text = m_Price.ToString();
 

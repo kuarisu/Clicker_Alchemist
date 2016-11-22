@@ -10,9 +10,12 @@ public class Upgrade_UpAdd : MonoBehaviour
 
     public string m_NameUp;
     public string m_Description;
-    public int m_Addition;
-    public int m_Price;
-    public int m_PriceMult;
+
+    public int m_BasePrice;
+    public int m_BaseAddition;
+
+    private int m_Addition;
+    private int m_Price;
 
     public GameObject m_TypePlant;
 
@@ -35,6 +38,8 @@ public class Upgrade_UpAdd : MonoBehaviour
 
     void Start()
     {
+        m_Addition = m_BaseAddition;
+        m_Price = m_BasePrice;
         m_TextName.text = m_NameUp;
         m_TextDescription.text = m_Description;
         m_TextPrice.text = m_Price.ToString();
@@ -90,11 +95,11 @@ public class Upgrade_UpAdd : MonoBehaviour
     }
     void ActionOnOrActive()
     {
-        //Action sur l'or
+        Manager_Gold.Instance.m_BonusActif += m_Addition;
     }
     void ActionOnOrPassive()
     {
-        //Action sur l'or
+        Manager_Gold.Instance.m_BonusPassif += m_Addition;
     }
     void ActionOnBourse()
     {
@@ -104,9 +109,10 @@ public class Upgrade_UpAdd : MonoBehaviour
 
     void LevelUp()
     {
-        m_Price *= 10;
-        m_Addition += m_Addition;
         m_Level++;
+        m_Price = m_BasePrice  * m_Level;
+        m_Addition = m_BaseAddition * m_Level;
+
 
         m_TextPrice.text = m_Price.ToString();
     }

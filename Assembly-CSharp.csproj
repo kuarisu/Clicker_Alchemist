@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Objects\Liste\Objects_Movable.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_SelectPosition.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_Selling.cs" />
+     <Compile Include="Assets\Scripts\Objects\Plante\Plante_SellingValues.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_Type.cs" />
      <Compile Include="Assets\Scripts\Objects\Request_Impact.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpAdd.cs" />
