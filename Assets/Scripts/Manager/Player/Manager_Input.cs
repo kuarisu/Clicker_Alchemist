@@ -9,6 +9,7 @@ public class Manager_Input : MonoBehaviour {
     public GameObject m_MainScreen;
     public GameObject m_Plante;
     public GameObject m_Selection;
+    public GameObject m_SellingButton;
 
     public List<Button_Opening> m_ButtonList = new List<Button_Opening>();
 
@@ -43,6 +44,9 @@ public class Manager_Input : MonoBehaviour {
     {
         if (Input.GetMouseButtonDown(0))
             Manager_Raycast.Instance.RayCast();
+
+        if (Input.GetMouseButtonDown(1))
+            Manager_Raycast.Instance.RayCastRightClick();
 
         if (m_StockedObject != null && Input.GetMouseButtonUp(0) && m_StockedObject.GetComponent<Objects_Movable>().m_Dragged == true)
         {
@@ -155,10 +159,12 @@ public class Manager_Input : MonoBehaviour {
         {
             if (m_Selection.activeSelf == false)
                 m_Selection.SetActive(true);
-
+        
            m_Plante = Manager_Raycast.Instance.m_ObjectMet;
            Manager_Ressources.Instance.m_TypePlant = (int)Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Type>().m_TypePlante;
            Manager_Ressources.Instance.ChangeRessources();
+            m_SellingButton.GetComponent<Plante_Selling>().ChangeText();
+
         }
 
 
@@ -209,6 +215,15 @@ public class Manager_Input : MonoBehaviour {
         else if (m_StockedObject != null && Manager_Raycast.Instance.m_FoundTag != "Employe")
         {
             m_StockedObject.GetComponent<Objects_Movable>().ResetPost();
+        }
+    }
+
+    public void RayCastRight()
+    {
+        if (Manager_Raycast.Instance.m_FoundTag == "Selling")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Selling>().ChangeValues();
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Plante_Selling>().ChangeText();
         }
     }
 }

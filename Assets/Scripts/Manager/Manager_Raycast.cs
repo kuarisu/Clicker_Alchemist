@@ -79,4 +79,23 @@ public class Manager_Raycast : MonoBehaviour
 
     }
 
+    public void RayCastRightClick()
+    {
+        Ray _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit _hit;
+
+        if (Physics.Raycast(_ray, out _hit))
+        {
+            m_FoundTag = _hit.collider.tag;
+            m_ObjectMet = _hit.collider.gameObject;
+
+            m_Instance.m_ObjectMet = m_ObjectMet;
+            m_Instance.m_tag = m_FoundTag;
+
+            Manager_Input.Instance.RayCastRight();
+
+        }
+
+    }
+
 }
