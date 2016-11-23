@@ -10,11 +10,15 @@ public class Potion_Creation : MonoBehaviour
     public Text m_TextNbPotion;
 
     public string m_NameUp;
-    public string m_Description;
+
+    public int m_NbPotionCreated = 0;
 
     public int m_BasePrice;
-    private int m_Price;
+    private int m_PriceMain;
+    private int m_PriceSecondary;
     private int m_NbPotion;
+
+
 
     private GameObject m_MainPlante;
     private GameObject m_SecondaryPlante;
@@ -75,20 +79,20 @@ public class Potion_Creation : MonoBehaviour
                 break;
         }
 
+        m_TextName.text = m_NameUp;
+        m_TextNbPotion.text = "x" + m_NbPotionCreated;
+        m_TextPrice.text = m_PriceMain + " " + m_MainPlante.name + "\n" + m_PriceSecondary + " " + m_SecondaryPlante.name;
 
-        //m_Addition = m_BaseAddition;
-        //m_Price = m_BasePrice;
-        //m_TextName.text = m_NameUp;
-        //m_TextDescription.text = m_Description;
-        //m_TextPrice.text = m_Price.ToString();
     }
 
     public void Action()
     {
-        if (m_Price <= Manager_Gold.Instance.m_FinalScore)
+        if (m_PriceMain <= m_MainPlante.GetComponent<Plante_Type>().m_FinalScore && m_PriceSecondary <= m_SecondaryPlante.GetComponent<Plante_Type>().m_FinalScore)
         {
-            Manager_Sparing.Instance.Sparing(m_Price);
-
+            m_MainPlante.GetComponent<Plante_Type>().m_FinalScore -= m_PriceMain;
+            m_SecondaryPlante.GetComponent<Plante_Type>().m_FinalScore -= m_PriceSecondary;
+            m_NbPotionCreated++;
+            m_TextNbPotion.text = "x " + m_NbPotionCreated;
         }
     }
 

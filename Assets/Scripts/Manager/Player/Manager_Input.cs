@@ -132,6 +132,7 @@ public class Manager_Input : MonoBehaviour {
         {
             if (m_Plante!=null)
                 m_Plante.GetComponent<Plante_Type>().ScoreActif(m_Plante.GetComponent<Plante_Type>().m_ClickGain);
+
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Button_ClickArea>().Bounce();
 
         }
