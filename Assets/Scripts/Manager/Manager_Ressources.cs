@@ -21,6 +21,14 @@ public class Manager_Ressources : MonoBehaviour
     public int m_CurrentScore;
 
     [HideInInspector]
+    public int m_PlanteQuantiy01;
+    [HideInInspector]
+    public int m_PlanteQuantiy02;
+    [HideInInspector]
+    public int m_PlanteQuantiy03;
+
+
+    [HideInInspector]
     public int m_CurrentGoldScore;
 
     public int m_TimePlante = 1;
@@ -65,7 +73,7 @@ public class Manager_Ressources : MonoBehaviour
 
     IEnumerator PassifPlante()
     {
-        
+        //CHANGER PAR UNE LISTE POUR POUVOIR RAJOUTER DE SPLANTES SI BESOIN.
         while (true)
         {
             if (Manager_Input.Instance.m_Plante != null)
@@ -76,6 +84,7 @@ public class Manager_Ressources : MonoBehaviour
             yield return new WaitForSeconds(m_TimePlante);
         }
     }
+
     IEnumerator PassifGold()
     {
 
@@ -112,27 +121,36 @@ public class Manager_Ressources : MonoBehaviour
     }
 
 
-    public void ChangeScore()
+    public void ChangeScoreClickArea()
     {
-        
+
         switch (m_TypePlant)
         {
             case 0:
-                m_TextPlant01.text = m_CurrentRessource + m_CurrentScore;
+                m_TextPlant01.text = m_Score01 + m_CurrentScore;
 
                 break;
             case 1:
-                m_TextPlant02.text = m_CurrentRessource + m_CurrentScore;
+                m_TextPlant02.text = m_Score02 + m_CurrentScore;
 
                 break;
             case 2:
-                m_TextPlant03.text = m_CurrentRessource + m_CurrentScore;
+                m_TextPlant03.text = m_Score03 + m_CurrentScore;
 
                 break;
             default:
                 break;
 
         }
+    }
+
+    public void ChangeScore()
+    { 
+        m_TextPlant01.text = m_Score01 + m_PlanteQuantiy01;
+
+        m_TextPlant02.text = m_Score02 + m_PlanteQuantiy02;
+      
+        m_TextPlant03.text = m_Score03 + m_PlanteQuantiy03;
     }
 
     public void ChangeGoldScore()

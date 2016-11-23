@@ -195,6 +195,14 @@ public class Manager_Input : MonoBehaviour {
         }
         #endregion
 
+        #region Potions
+
+        if (Manager_Raycast.Instance.m_FoundTag == "PotionBuy")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<Potion_Creation>().Action();
+        }
+        #endregion
+
     }
 
     public void CheckRayCastUp()

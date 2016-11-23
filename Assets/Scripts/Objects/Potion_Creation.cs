@@ -13,9 +13,8 @@ public class Potion_Creation : MonoBehaviour
 
     public int m_NbPotionCreated = 0;
 
-    public int m_BasePrice;
-    private int m_PriceMain;
-    private int m_PriceSecondary;
+    public int m_PriceMain;
+    public int m_PriceSecondary;
     private int m_NbPotion;
 
 
@@ -90,7 +89,9 @@ public class Potion_Creation : MonoBehaviour
         if (m_PriceMain <= m_MainPlante.GetComponent<Plante_Type>().m_FinalScore && m_PriceSecondary <= m_SecondaryPlante.GetComponent<Plante_Type>().m_FinalScore)
         {
             m_MainPlante.GetComponent<Plante_Type>().m_FinalScore -= m_PriceMain;
+            m_MainPlante.GetComponent<Plante_Type>().FinalScorePotion();
             m_SecondaryPlante.GetComponent<Plante_Type>().m_FinalScore -= m_PriceSecondary;
+            m_SecondaryPlante.GetComponent<Plante_Type>().FinalScorePotion();
             m_NbPotionCreated++;
             m_TextNbPotion.text = "x " + m_NbPotionCreated;
         }

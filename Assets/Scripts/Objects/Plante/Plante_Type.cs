@@ -50,7 +50,6 @@ public class Plante_Type : MonoBehaviour {
 
     public void ScorePassif(int _score)
     {
-        Debug.Log(m_MultPassif);
         m_ScorePassif = m_FinalScore + (_score + m_BonusPassif) * m_MultPassif;
         FinalScorePassif();
     }
@@ -59,12 +58,51 @@ public class Plante_Type : MonoBehaviour {
     {
         m_FinalScore = m_CurrentScore + m_ScoreActif;
         Manager_Ressources.Instance.m_CurrentScore = m_FinalScore;
-        Manager_Ressources.Instance.ChangeScore();
+        Manager_Ressources.Instance.ChangeScoreClickArea();
     }
     public void FinalScorePassif()
     {
         m_FinalScore = m_CurrentScore + m_ScorePassif;
-        Manager_Ressources.Instance.m_CurrentScore = m_FinalScore;
+        switch (m_TypePlante)
+        {
+            case Type.Type01:
+                Manager_Ressources.Instance.m_PlanteQuantiy01 = m_FinalScore;
+                break;
+            case Type.Type02:
+                Manager_Ressources.Instance.m_PlanteQuantiy02 = m_FinalScore;
+                break;
+            case Type.Type03:
+                Manager_Ressources.Instance.m_PlanteQuantiy03 = m_FinalScore;
+                break;
+            default:
+                break;
+        }
+        //Manager_Ressources.Instance.m_CurrentScore = m_FinalScore;
+        ChangeFinalScore();
+    }
+
+    public void FinalScorePotion()
+    {
+        switch (m_TypePlante)
+        {
+            case Type.Type01:
+                Manager_Ressources.Instance.m_PlanteQuantiy01 = m_FinalScore;
+                break;
+            case Type.Type02:
+                Manager_Ressources.Instance.m_PlanteQuantiy02 = m_FinalScore;
+                break;
+            case Type.Type03:
+                Manager_Ressources.Instance.m_PlanteQuantiy03 = m_FinalScore;
+                break;
+            default:
+                break;
+        }
+
+        ChangeFinalScore();
+    }
+
+    public void ChangeFinalScore()
+    {
         Manager_Ressources.Instance.ChangeScore();
     }
 

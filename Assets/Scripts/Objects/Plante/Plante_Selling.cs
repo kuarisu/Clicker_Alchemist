@@ -36,7 +36,7 @@ public class Plante_Selling : MonoBehaviour {
 
             Manager_Input.Instance.m_Plante.GetComponent<Plante_Type>().m_FinalScore -= m_CurrentPlante.m_NbSold * m_CurrentPlante.m_MultiplicatorList[m_CurrentPlante.m_NbClick];
             Manager_Ressources.Instance.m_CurrentScore = Manager_Input.Instance.m_Plante.GetComponent<Plante_Type>().m_FinalScore;
-            Manager_Ressources.Instance.ChangeScore();
+            Manager_Ressources.Instance.ChangeScoreClickArea();
             m_Score = m_CurrentPlante.m_NbGoldForOne * m_CurrentPlante.m_MultiplicatorList[m_CurrentPlante.m_NbClick];
             Manager_Gold.Instance.IncreaseGoldActif(m_Score);
         }
