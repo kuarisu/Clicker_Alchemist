@@ -2,13 +2,11 @@
 using System.Collections;
 
 public class Request_Impact : MonoBehaviour {
-
-    Vector3 mousePos;
-    Vector3 initialPos;
+    // Tout ce qui constitue la request (nom, description, demande, timer, impact sur le jeu si remplie)
 
     // Use this for initialization
     void Start () {
-        initialPos = transform.position;
+
 
     }
 	
@@ -16,5 +14,15 @@ public class Request_Impact : MonoBehaviour {
 	void Update () {
 
         
+    }
+
+    public void Accepted()
+    {
+
+    }
+
+    public void Declined()
+    {
+
     }
 }
