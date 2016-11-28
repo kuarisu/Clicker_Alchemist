@@ -60,8 +60,21 @@ public class Objects_Movable : MonoBehaviour {
 
     public void ResetPost()
     {
-        Debug.Log("Back to position !");
-        transform.position = m_PreviousPos;
-        Manager_Input.Instance.GetComponent<Manager_Input>().m_StockedObject = null;
+        if (m_TypeMovableObject == Type.Request && this.GetComponent<Request_Impact>().m_isActivated == true)
+        {
+            if(this.GetComponent<Request_Impact>().m_isAccepted == true)
+            {
+                this.GetComponent<Request_Impact>().Accepted();
+            }
+            else
+            {
+                this.GetComponent<Request_Impact>().Declined();
+            }
+        }
+        else if (m_TypeMovableObject != Type.Request || this.GetComponent<Request_Impact>().m_isActivated == false)
+        {
+            transform.position = m_PreviousPos;
+            Manager_Input.Instance.GetComponent<Manager_Input>().m_StockedObject = null;
+        }
     }
 }

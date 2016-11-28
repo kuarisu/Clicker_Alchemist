@@ -59,8 +59,11 @@
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_Selling.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_SellingValues.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_Type.cs" />
-     <Compile Include="Assets\Scripts\Objects\Potion_Creation.cs" />
-     <Compile Include="Assets\Scripts\Objects\Request_Impact.cs" />
+     <Compile Include="Assets\Scripts\Objects\Potions\Potion_Creation.cs" />
+     <Compile Include="Assets\Scripts\Objects\Request\Request_Impact.cs" />
+     <Compile Include="Assets\Scripts\Objects\Request\Request_MainSpawn.cs" />
+     <Compile Include="Assets\Scripts\Objects\Request\Request_No.cs" />
+     <Compile Include="Assets\Scripts\Objects\Request\Request_Yes.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpAdd.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpMult.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpPerCent.cs" />

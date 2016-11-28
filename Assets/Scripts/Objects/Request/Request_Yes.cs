@@ -3,11 +3,20 @@ using System.Collections;
 
 public class Request_Yes : MonoBehaviour {
 
-    void OnColliderEnter (Collider col)
+
+    void OnTriggerEnter(Collider col)
     {
-        if(col.tag == "Request")
+        if(col.tag == "Movable")
         {
-            col.gameObject.GetComponent<Request_Impact>().Accepted();
+            col.gameObject.GetComponent<Request_Impact>().m_isActivated = true;
+            col.gameObject.GetComponent<Request_Impact>().m_isAccepted = true;
+        }
+    }
+    void OnTriggerExit(Collider col)
+    {
+        if (col.tag == "Movable")
+        {
+            col.gameObject.GetComponent<Request_Impact>().m_isActivated = false;
         }
     }
 
