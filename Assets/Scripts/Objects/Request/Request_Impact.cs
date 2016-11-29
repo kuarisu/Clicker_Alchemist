@@ -21,11 +21,17 @@ public class Request_Impact : MonoBehaviour {
 
     public void Accepted()
     {
+        // do stuff about the quest
         Debug.Log("hello yes");
+        this.GetComponentInParent<Request_MainSpawn>().Destroying();
+        this.GetComponentInParent<Request_MainSpawn>().StartingTimers();
+
     }
 
     public void Declined()
     {
         Debug.Log("hello no");
+        this.GetComponentInParent<Request_MainSpawn>().Destroying();
+
     }
 }

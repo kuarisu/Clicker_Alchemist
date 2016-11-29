@@ -1,9 +1,9 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{274D8DB5-1414-CB04-EB25-EBF9EA573C5F}") = "Clicker_Alchemist", "Assembly-CSharp-firstpass.csproj", "{64787347-F82F-9E98-FCD3-3A2C90D58B64}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicker_Alchemist.CSharp.Plugins", "Clicker_Alchemist.CSharp.Plugins.csproj", "{1C4AE257-7FED-7A33-445A-EC6F5F381BDB}"
 EndProject
-Project("{274D8DB5-1414-CB04-EB25-EBF9EA573C5F}") = "Clicker_Alchemist", "Assembly-CSharp.csproj", "{B75DB914-7368-18DA-41C1-312A07FB0B27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Clicker_Alchemist.CSharp", "Clicker_Alchemist.CSharp.csproj", "{C6D4650D-7EFB-4C81-81D6-E4E8EDB9E016}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,19 +11,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{64787347-F82F-9E98-FCD3-3A2C90D58B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64787347-F82F-9E98-FCD3-3A2C90D58B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64787347-F82F-9E98-FCD3-3A2C90D58B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64787347-F82F-9E98-FCD3-3A2C90D58B64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B75DB914-7368-18DA-41C1-312A07FB0B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B75DB914-7368-18DA-41C1-312A07FB0B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B75DB914-7368-18DA-41C1-312A07FB0B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B75DB914-7368-18DA-41C1-312A07FB0B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C4AE257-7FED-7A33-445A-EC6F5F381BDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4AE257-7FED-7A33-445A-EC6F5F381BDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4AE257-7FED-7A33-445A-EC6F5F381BDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4AE257-7FED-7A33-445A-EC6F5F381BDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6D4650D-7EFB-4C81-81D6-E4E8EDB9E016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6D4650D-7EFB-4C81-81D6-E4E8EDB9E016}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6D4650D-7EFB-4C81-81D6-E4E8EDB9E016}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6D4650D-7EFB-4C81-81D6-E4E8EDB9E016}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
