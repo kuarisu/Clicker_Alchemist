@@ -13,6 +13,8 @@ public class Manager_Gold : MonoBehaviour {
     public int m_BonusPassif;
     public int m_MultPassif;
 
+    public int m_CommandeGold;
+
     [HideInInspector]
     public int m_FinalScore = 0;
 
@@ -61,5 +63,15 @@ public class Manager_Gold : MonoBehaviour {
         m_FinalScore = m_CurrentScore + m_ScorePassif;
         Manager_Ressources.Instance.m_CurrentGoldScore = m_FinalScore;
         Manager_Ressources.Instance.ChangeGoldScore();
+    }
+
+    public void FinalScoreCommande()
+    {
+
+        m_FinalScore = m_CurrentScore + m_CommandeGold;
+        Manager_Ressources.Instance.m_CurrentGoldScore = m_FinalScore;
+        Manager_Ressources.Instance.ChangeGoldScore();
+
+
     }
 }
