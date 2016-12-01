@@ -49,11 +49,14 @@
      <Compile Include="Assets\Scripts\Liste\Liste_EmployArea.cs" />
      <Compile Include="Assets\Scripts\Liste\Liste_ObjMoveable.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Gold.cs" />
+     <Compile Include="Assets\Scripts\Manager\Manager_Potions.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Raycast.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Ressources.cs" />
      <Compile Include="Assets\Scripts\Manager\Manager_Sparing.cs" />
      <Compile Include="Assets\Scripts\Manager\Player\Manager_Input.cs" />
-     <Compile Include="Assets\Scripts\Manager\RessourcesName.cs" />
+     <Compile Include="Assets\Scripts\Manager\Player\RessourcesName.cs" />
+     <Compile Include="Assets\Scripts\Objects\Commande\Commande_Impact.cs" />
+     <Compile Include="Assets\Scripts\Objects\Commande\Commande_Spawn.cs" />
      <Compile Include="Assets\Scripts\Objects\Liste\Objects_Movable.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_SelectPosition.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_Selling.cs" />
@@ -70,6 +73,7 @@
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_ClickArea.cs" />
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_Opening.cs" />
      <Compile Include="Assets\Scripts\Screens\Screen_Slide.cs" />
+     <Compile Include="Assets\Scripts\StockEx_Flux.cs" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Plugins\XInputDotNet\MITLicense.txt" />

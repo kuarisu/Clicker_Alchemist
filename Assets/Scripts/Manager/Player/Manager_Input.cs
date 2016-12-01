@@ -28,6 +28,7 @@ public class Manager_Input : MonoBehaviour {
 
     private void Awake()
     {
+
         if (Manager_Input.Instance != null)
         {
             Destroy(this.gameObject);
@@ -42,8 +43,10 @@ public class Manager_Input : MonoBehaviour {
 
     void Update ()
     {
+
         if (Input.GetMouseButtonDown(0))
             Manager_Raycast.Instance.RayCast();
+
 
         if (Input.GetMouseButtonDown(1))
             Manager_Raycast.Instance.RayCastRightClick();

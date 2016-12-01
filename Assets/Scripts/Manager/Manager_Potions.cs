@@ -11,7 +11,7 @@ public class Manager_Potions : MonoBehaviour {
 
     private void Awake()
     {
-        if (Manager_Gold.Instance != null)
+        if (Manager_Potions.Instance != null)
         {
             Destroy(this.gameObject);
             return;

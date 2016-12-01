@@ -68,6 +68,8 @@ public class Manager_Ressources : MonoBehaviour
         m_ScoreGolde = m_TextGold.text;
         StartCoroutine(PassifPlante());
         StartCoroutine(PassifGold());
+        ChangeGoldScore();
+        ChangeScore();
     }
 
 
