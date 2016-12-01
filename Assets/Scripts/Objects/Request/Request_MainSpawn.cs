@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,8 +12,13 @@ public class Request_MainSpawn : MonoBehaviour {
     private float m_TimerSpawn; //Temps avant qu'une nouvelle commande spawn
     [SerializeField]
     private float m_TimerLasting; //Temps pendant laquelle la commande reste
-    public float m_CurrentTime; 
+    public float m_CurrentTime;
 
+
+    [SerializeField]
+    Canvas m_StockEx;
+    public int m_TimerBonus;
+    public int m_TempBonus;
     // Spawn tous les X secondes des commandes random selon liste (si commande une fois plus du tout après ?) au transform de l'empty game object Request.
 
 
@@ -63,5 +69,23 @@ public class Request_MainSpawn : MonoBehaviour {
     {
         if(m_CurrentRequest != null)
         Destroy(m_CurrentRequest);
+    }
+
+    public void TimerTempo()
+    {
+        StartCoroutine(TimerBonus());
+    }
+
+    IEnumerator TimerBonus()
+    {
+        Debug.Log("hhelo");
+      
+           m_StockEx.GetComponent<StockEx_BonusRequest>().m_CurrentBonus = m_TempBonus;
+
+        yield return new WaitForSeconds(m_TimerBonus);
+
+        m_StockEx.GetComponent<StockEx_BonusRequest>().m_CurrentBonus = 0;
+
+        yield return null;
     }
 }

@@ -108,6 +108,8 @@
     <Compile Include="Assets\Scripts\Objects\Request\Request_MainSpawn.cs" />
     <Compile Include="Assets\Scripts\Objects\Request\Request_No.cs" />
     <Compile Include="Assets\Scripts\Objects\Request\Request_Yes.cs" />
+    <Compile Include="Assets\Scripts\Objects\StockEx\StockEx_BonusRequest.cs" />
+    <Compile Include="Assets\Scripts\Objects\StockEx\StockEx_Flux.cs" />
     <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpAdd.cs" />
     <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpMult.cs" />
     <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpPerCent.cs" />

@@ -13,7 +13,6 @@ public class Commande_Spawn : MonoBehaviour
     [SerializeField]
     private float m_TimerLasting; //Temps pendant laquelle la commande reste
     public float m_CurrentTime;
-
     // Spawn tous les X secondes des commandes random selon liste (si commande une fois plus du tout après ?) au transform de l'empty game object Request.
 
 
@@ -57,8 +56,8 @@ public class Commande_Spawn : MonoBehaviour
 
     void SpawnNewCommande()
     {
-        m_CurrentCommande = (GameObject)Instantiate(m_CommandeList[Random.Range(0, m_CommandeList.Count - 1)], new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f), transform.rotation);
-        m_CurrentCommande.transform.parent = this.transform;
+        m_CurrentCommande = (GameObject)Instantiate(m_CommandeList[Random.Range(0, m_CommandeList.Count - 1)], new Vector3(0, transform.position.y, transform.position.z - 0.1f), transform.rotation);
+        m_CurrentCommande.transform.SetParent(this.transform, false);
     }
 
     public void Destroying()

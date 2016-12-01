@@ -206,6 +206,13 @@ public class Manager_Input : MonoBehaviour {
         }
         #endregion
 
+        #region StockEx
+        if (Manager_Raycast.Instance.m_FoundTag == "StockExSelling")
+        {
+            Manager_Raycast.Instance.m_ObjectMet.GetComponent<StockEx_Flux>().PotionSelling();
+        }
+        #endregion
+
     }
 
     public void CheckRayCastUp()

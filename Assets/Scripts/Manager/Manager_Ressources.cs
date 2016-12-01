@@ -42,6 +42,13 @@ public class Manager_Ressources : MonoBehaviour
     [HideInInspector]
     public int m_TypePlant;
 
+    [SerializeField]
+    GameObject m_Plante_01;
+    [SerializeField]
+    GameObject m_Plante_02;
+    [SerializeField]
+    GameObject m_Plante_03;
+
     string m_Score01;
     string m_Score02;
     string m_Score03;
@@ -78,11 +85,12 @@ public class Manager_Ressources : MonoBehaviour
         //CHANGER PAR UNE LISTE POUR POUVOIR RAJOUTER DE SPLANTES SI BESOIN.
         while (true)
         {
-            if (Manager_Input.Instance.m_Plante != null)
-            {
-                Manager_Input.Instance.m_Plante.GetComponent<Plante_Type>().ScorePassif(1);
-                
-            }
+            
+            m_Plante_01.GetComponent<Plante_Type>().ScorePassif(1);
+            m_Plante_02.GetComponent<Plante_Type>().ScorePassif(1);
+            m_Plante_03.GetComponent<Plante_Type>().ScorePassif(1);
+
+
             yield return new WaitForSeconds(m_TimePlante);
         }
     }
@@ -92,10 +100,10 @@ public class Manager_Ressources : MonoBehaviour
 
         while (true)
         {
-            if (Manager_Input.Instance.m_Plante != null)
-            {
-                Manager_Gold.Instance.IncreaseGoldPassif(0);
-            }
+            Debug.Log("hello");
+          
+            Manager_Gold.Instance.IncreaseGoldPassif(0);
+
             yield return new WaitForSeconds(m_TimeGold);
         }
     }

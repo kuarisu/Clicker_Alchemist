@@ -16,12 +16,12 @@ public class Plante_Type : MonoBehaviour {
 
     [HideInInspector]
     public int m_BonusActif = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int m_BonusPassif = 0;
 
     [HideInInspector]
     public int m_MultActif = 1;
-    [HideInInspector]
+    //[HideInInspector]
     public int m_MultPassif = 1;
 
     [HideInInspector]

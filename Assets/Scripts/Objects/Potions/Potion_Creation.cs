@@ -93,10 +93,14 @@ public class Potion_Creation : MonoBehaviour
             m_SecondaryPlante.GetComponent<Plante_Type>().m_FinalScore -= m_PriceSecondary;
             m_SecondaryPlante.GetComponent<Plante_Type>().FinalScorePotion();
             m_NbPotionCreated++;
-            m_TextNbPotion.text = "x " + m_NbPotionCreated;
+            ChangeNb();
         }
     }
 
+    public void ChangeNb()
+    {
+        m_TextNbPotion.text = "x " + m_NbPotionCreated;
+    }
 
     void Add()
     {
