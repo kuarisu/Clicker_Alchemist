@@ -60,7 +60,7 @@ public class Request_Impact : MonoBehaviour {
             default:
                 break;
         }
-        Debug.Log("hello yes");
+
         this.GetComponentInParent<Request_MainSpawn>().m_TimerBonus = m_TimerBonus;
         this.GetComponentInParent<Request_MainSpawn>().m_TempBonus = m_Bonus;
         this.GetComponentInParent<Request_MainSpawn>().TimerTempo();
@@ -71,7 +71,7 @@ public class Request_Impact : MonoBehaviour {
 
     public void Declined()
     {
-        Debug.Log("hello no");
+
  
         this.GetComponentInParent<Request_MainSpawn>().StartingTimers();
         this.GetComponentInParent<Request_MainSpawn>().Destroying();

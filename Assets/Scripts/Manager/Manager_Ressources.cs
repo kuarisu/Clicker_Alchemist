@@ -100,7 +100,6 @@ public class Manager_Ressources : MonoBehaviour
 
         while (true)
         {
-            Debug.Log("hello");
           
             Manager_Gold.Instance.IncreaseGoldPassif(0);
 
