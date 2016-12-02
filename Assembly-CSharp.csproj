@@ -67,13 +67,14 @@
      <Compile Include="Assets\Scripts\Objects\Request\Request_MainSpawn.cs" />
      <Compile Include="Assets\Scripts\Objects\Request\Request_No.cs" />
      <Compile Include="Assets\Scripts\Objects\Request\Request_Yes.cs" />
+     <Compile Include="Assets\Scripts\Objects\StockEx\StockEx_BonusRequest.cs" />
+     <Compile Include="Assets\Scripts\Objects\StockEx\StockEx_Flux.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpAdd.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpMult.cs" />
      <Compile Include="Assets\Scripts\Objects\Upgrade\Upgrade_UpPerCent.cs" />
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_ClickArea.cs" />
      <Compile Include="Assets\Scripts\Screens\Buttons\Button_Opening.cs" />
      <Compile Include="Assets\Scripts\Screens\Screen_Slide.cs" />
-     <Compile Include="Assets\Scripts\StockEx_Flux.cs" />
      <None Include="Assets\Plugins\Demigiant\DOTween\readme.txt" />
      <None Include="Assets\Plugins\Demigiant\DOTween\DOTween50.xml" />
      <None Include="Assets\Plugins\XInputDotNet\MITLicense.txt" />

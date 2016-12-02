@@ -80,7 +80,7 @@ public class Potion_Creation : MonoBehaviour
 
         m_TextName.text = m_NameUp;
         m_TextNbPotion.text = "x" + m_NbPotionCreated;
-        m_TextPrice.text = m_PriceMain + " " + m_MainPlante.name + "\n" + m_PriceSecondary + " " + m_SecondaryPlante.name;
+        m_TextPrice.text = m_PriceMain + " " + m_MainPlante.name+"s" + "\n" + m_PriceSecondary + " " + m_SecondaryPlante.name +"s";
 
     }
 
