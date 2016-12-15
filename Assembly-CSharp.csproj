@@ -58,6 +58,8 @@
      <Compile Include="Assets\Scripts\Objects\Commande\Commande_Impact.cs" />
      <Compile Include="Assets\Scripts\Objects\Commande\Commande_Spawn.cs" />
      <Compile Include="Assets\Scripts\Objects\Liste\Objects_Movable.cs" />
+     <Compile Include="Assets\Scripts\Objects\Liste\Postulant_Bonus.cs" />
+     <Compile Include="Assets\Scripts\Objects\Liste\Postulant_Spawn.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_SelectPosition.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_Selling.cs" />
      <Compile Include="Assets\Scripts\Objects\Plante\Plante_SellingValues.cs" />
