@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Button_Opening : MonoBehaviour {
 
@@ -10,6 +11,13 @@ public class Button_Opening : MonoBehaviour {
     public bool m_isOpened = false;
 
     public GameObject m_textForThisButton;
+
+    [SerializeField]
+    Animator m_AnSquare;
+    [SerializeField]
+    BoxCollider m_FullButtonCollider;
+    [SerializeField]
+    Image m_IconButton;
 
     void Start()
     {
@@ -52,14 +60,24 @@ public class Button_Opening : MonoBehaviour {
 
     public void Opening()
     {
+        m_AnSquare.SetBool("m_ClosingButton", true);
         m_An.SetBool("IsOpen", true);
+        m_FullButtonCollider.enabled = false;
+        //Color _color = m_IconButton.color;
+        //_color.a = 0.75f;
+        //m_IconButton.color = _color;
         m_isOpened = true;
 
 
     }
     public void Closing()
     {
+        m_AnSquare.SetBool("m_ClosingButton", false);
         m_An.SetBool("IsOpen", false);
+        m_FullButtonCollider.enabled = true;
+        //Color _color = m_IconButton.color;
+        //_color.a = 1f;
+        //m_IconButton.color = _color;
         m_isOpened = false;
 
     }
