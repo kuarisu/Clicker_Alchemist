@@ -196,7 +196,6 @@ public class StockEx_Flux : MonoBehaviour {
             Manager_Potions.Instance.m_ListPotion[m_Index].GetComponent<Potion_Creation>().m_NbPotionCreated -= m_NbSelling;
             Manager_Potions.Instance.m_ListPotion[m_Index].GetComponent<Potion_Creation>().ChangeNb();
             Manager_Gold.Instance.m_CommandeGold += ((int) m_NewPrice * m_NbSelling);
-            Debug.Log(((int)m_NewPrice * m_NbSelling));
             Manager_Gold.Instance.FinalScoreCommande();
         }
     }

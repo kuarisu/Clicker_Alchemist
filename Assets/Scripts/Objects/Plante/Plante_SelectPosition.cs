@@ -27,17 +27,17 @@ public class Plante_SelectPosition : MonoBehaviour {
 
     public void Position01()
     {
-        transform.DOMove(m_position01 + new Vector3(0,0,0.01f), 0.2f);
+        transform.DOMove(m_position01 + new Vector3(0,0.02f,0.01f), 0.2f);
     }
 
     public void Position02()
     {
-        transform.DOMove(m_position02 + new Vector3(0, 0, 0.01f), 0.2f);
+        transform.DOMove(m_position02 + new Vector3(0, 0.02f, 0.01f), 0.2f);
     }
 
     public void Position03()
     {
-        transform.DOMove(m_position03 + new Vector3(0,0, 0.01f), 0.2f);
+        transform.DOMove(m_position03 + new Vector3(0,0.02f, 0.01f), 0.2f);
     }
 
 

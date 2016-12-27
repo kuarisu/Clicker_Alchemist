@@ -78,8 +78,7 @@ public class Request_MainSpawn : MonoBehaviour {
 
     IEnumerator TimerBonus()
     {
-        Debug.Log("hhelo");
-      
+     
            m_StockEx.GetComponent<StockEx_BonusRequest>().m_CurrentBonus = m_TempBonus;
 
         yield return new WaitForSeconds(m_TimerBonus);

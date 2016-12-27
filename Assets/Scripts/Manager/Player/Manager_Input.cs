@@ -13,6 +13,11 @@ public class Manager_Input : MonoBehaviour {
 
     public List<Button_Opening> m_ButtonList = new List<Button_Opening>();
 
+    [SerializeField]
+    GameObject m_Request;
+    [SerializeField]
+    GameObject m_Commande;
+
     [HideInInspector]
     public GameObject m_StockedObject;
     [HideInInspector]
@@ -62,7 +67,7 @@ public class Manager_Input : MonoBehaviour {
     public void CheckRayCast()
     {
         #region Onglets
-        if (Manager_Raycast.Instance.m_FoundTag == "TriggerList" || Manager_Raycast.Instance.m_FoundTag == "TriggerRP")
+        if (Manager_Raycast.Instance.m_FoundTag == "TriggerList" || Manager_Raycast.Instance.m_FoundTag == "TriggerCommande" || Manager_Raycast.Instance.m_FoundTag == "TriggerRequest")
         {
 
             #region ClosingButtons
@@ -106,17 +111,37 @@ public class Manager_Input : MonoBehaviour {
 
             }
 
-            if (Manager_Raycast.Instance.m_FoundTag == "TriggerRP")
+            if (Manager_Raycast.Instance.m_FoundTag == "TriggerCommande")
             {
                 if (m_isClickedRP == false)
                 {
+
                     m_MainScreen.GetComponent<Screen_Slide>().LerpRP();
+                    m_Commande.transform.position = new Vector3(m_Commande.transform.position.x, m_Commande.transform.position.y, 0);
                     m_isClickedRP = true;
                 }
 
                 else
                 {
                     m_MainScreen.GetComponent<Screen_Slide>().LerpMain();
+                    m_Commande.transform.position = new Vector3(m_Commande.transform.position.x, m_Commande.transform.position.y, 20);
+                    m_isClickedRP = false;
+                }
+            }
+
+            if (Manager_Raycast.Instance.m_FoundTag == "TriggerRequest")
+            {
+                if (m_isClickedRP == false)
+                {
+                    m_MainScreen.GetComponent<Screen_Slide>().LerpRP();
+                    m_Request.transform.position = new Vector3(m_Request.transform.position.x, m_Request.transform.position.y, 0);
+                    m_isClickedRP = true;
+                }
+
+                else
+                {
+                    m_MainScreen.GetComponent<Screen_Slide>().LerpMain();
+                    m_Request.transform.position = new Vector3(m_Request.transform.position.x, m_Request.transform.position.y, 20);
                     m_isClickedRP = false;
                 }
             }
