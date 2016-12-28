@@ -28,6 +28,7 @@ public class Liste_ObjMoveable : MonoBehaviour {
     {
         this.transform.SetParent(Manager_Raycast.Instance.m_ObjectMet.transform);
         this.GetComponent<Postulant_Bonus>().Action();
+        this.GetComponent<Postulant_Bonus>().m_ManagerSpawn.GetComponent<Postulant_Spawn>().m_CurrentNbPostulant--;
 
         if (Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Count != 0)
         {
@@ -40,6 +41,7 @@ public class Liste_ObjMoveable : MonoBehaviour {
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Clear();
         }
 
+        transform.tag = "Employe";
         transform.position = Manager_Raycast.Instance.m_ObjectMet.transform.position;
         gameObject.GetComponent<Objects_Movable>().StockPos();
 
@@ -49,25 +51,6 @@ public class Liste_ObjMoveable : MonoBehaviour {
         gameObject.GetComponent<Objects_Movable>().m_Movable = false;
     }
 
-    public void UseTimer()
-    {
-        StartCoroutine(UsingTimer());
-    }
-
-    IEnumerator UsingTimer()
-    {
-        float _currentTimer = 0;
-        while (_currentTimer <= m_Timer)
-        {
-            if (m_UseTimer)
-            {
-                _currentTimer += 1 * Time.deltaTime;
-                yield return new WaitForEndOfFrame();
-            }
-        }
-        Destroy(this);
-        yield return null;
-    }
 
 }
 

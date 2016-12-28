@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class Postulant_Bonus : MonoBehaviour {
 
+    
+    public GameObject m_ManagerSpawn;
 
     [SerializeField]
     Text m_TextBonus;
@@ -88,6 +90,14 @@ public class Postulant_Bonus : MonoBehaviour {
             default:
                 break;
         }
+
+        StartCoroutine(TimerTimeLeft());
+        m_ManagerSpawn = this.transform.parent.gameObject;
+    }
+
+    void Update()
+    {
+        Debug.Log(transform.tag);
     }
 
     public void Action()
@@ -272,6 +282,24 @@ public class Postulant_Bonus : MonoBehaviour {
         
     }
     #endregion
+
+    IEnumerator TimerTimeLeft()
+    {
+        float _currentTime = 0;
+
+        while (_currentTime < m_Timer)
+        {
+            _currentTime += Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+        if (this.transform.tag == "Movable")
+        {
+            Destroy(this.gameObject);
+        }
+        
+        m_ManagerSpawn.GetComponent<Postulant_Spawn>().m_CurrentNbPostulant--;
+        yield break;
+    }
 
     public void Cancel()
     {
