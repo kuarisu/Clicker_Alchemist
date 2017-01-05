@@ -23,10 +23,6 @@ public class Postulant_Spawn : MonoBehaviour {
         StartCoroutine(SpawnCoroutine());
     }
 
-    void Update()
-    {
-        Debug.Log(m_CurrentNbPostulant + " " + this.gameObject.name);
-    }
 
     IEnumerator SpawnCoroutine()
     {

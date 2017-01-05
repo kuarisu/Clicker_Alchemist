@@ -95,10 +95,6 @@ public class Postulant_Bonus : MonoBehaviour {
         m_ManagerSpawn = this.transform.parent.gameObject;
     }
 
-    void Update()
-    {
-        Debug.Log(transform.tag);
-    }
 
     public void Action()
     {
