@@ -10,32 +10,35 @@ public class Screen_Slide : MonoBehaviour
 
     public void LerpList()
     {
+        SetActiveFalse();
         transform.DOMoveX(-14.25f, 0.5f);
         m_ClickArea.transform.DOMoveX(-8f, 0.525f);
-        Invoke("SetActiveFalse", 0.2f);
+
     }
 
     public void LerpRP()
     {
+        SetActiveFalse();
         transform.DOMoveX(14.25f, 0.5f);
         m_ClickArea.transform.DOMoveX(8f, 0.525f);
-        Invoke("SetActiveFalse", 0.2f);
+        
     }
 
     public void LerpMain()
     {
+        SetActiveTrue();
         transform.DOMoveX(0, 0.5f);
         m_ClickArea.transform.DOMoveX(0, 0.525f);
-        Invoke("SetActiveTrue", 0.2f);
+
     }
 
     void SetActiveFalse()
     {
-        m_Buttons.SetActive(false);
+        m_Buttons.transform.DOMoveZ(1.2f, 0.1f); ;
     }
 
     void SetActiveTrue()
     {
-        m_Buttons.SetActive(true);
+        m_Buttons.transform.DOMoveZ(0, 0.1f); ; ;
     }
 }

@@ -31,7 +31,7 @@ public class Postulant_Spawn : MonoBehaviour {
             while (m_CurrentNbPostulant < m_NbMaxPostulant)
             {
                 Image _newPostulant = Instantiate(m_ListPostulant[Random.Range(0, m_ListPostulant.Count - 1)]);
-                _newPostulant.transform.parent = this.transform;
+                _newPostulant.transform.SetParent(this.transform, true);
                 //m_ListOfCurrentPostulant.Insert(m_CurrentNbPostulant - 1, _newPostulant);
                 m_CurrentNbPostulant++;
                 yield return new WaitForSeconds(m_TimerSpawn);

@@ -22,7 +22,7 @@ public class Button_Opening : MonoBehaviour {
     void Start()
     {
         m_An = m_Screen.GetComponent<Animator>();
-        m_isOpened = false;
+        //m_isOpened = false;
     }
 
     public void Clicked()
@@ -63,9 +63,6 @@ public class Button_Opening : MonoBehaviour {
         m_AnSquare.SetBool("m_ClosingButton", true);
         m_An.SetBool("IsOpen", true);
         m_FullButtonCollider.enabled = false;
-        //Color _color = m_IconButton.color;
-        //_color.a = 0.75f;
-        //m_IconButton.color = _color;
         m_isOpened = true;
 
 
@@ -75,9 +72,6 @@ public class Button_Opening : MonoBehaviour {
         m_AnSquare.SetBool("m_ClosingButton", false);
         m_An.SetBool("IsOpen", false);
         m_FullButtonCollider.enabled = true;
-        //Color _color = m_IconButton.color;
-        //_color.a = 1f;
-        //m_IconButton.color = _color;
         m_isOpened = false;
 
     }

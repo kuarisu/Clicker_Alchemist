@@ -70,28 +70,28 @@ public class Manager_Input : MonoBehaviour {
         if (Manager_Raycast.Instance.m_FoundTag == "TriggerList" || Manager_Raycast.Instance.m_FoundTag == "TriggerCommande" || Manager_Raycast.Instance.m_FoundTag == "TriggerRequest")
         {
 
-            #region ClosingButtons
-            if(m_NbBOpened != 0)
-            {
-                while (m_NbBOpened > 1)
-                {
+            //#region ClosingButtons
+            //if(m_NbBOpened != 0)
+            //{
+            //    while (m_NbBOpened > 1)
+            //    {
 
-                    foreach (Button_Opening Buttons in m_ButtonList)
-                    {
-                        if (Buttons.GetComponent<Button_Opening>().m_isOpened == true)
-                        {
-                            Buttons.GetComponent<Button_Opening>().Closing();
-                            m_NbBOpened--;
-                        }
-                    }
+            //        foreach (Button_Opening Buttons in m_ButtonList)
+            //        {
+            //            if (Buttons.GetComponent<Button_Opening>().m_isOpened == true)
+            //            {
+            //                Buttons.GetComponent<Button_Opening>().Closing();
+            //                m_NbBOpened--;
+            //            }
+            //        }
 
-                }
+            //    }
 
-            }
+            //}
 
 
 
-            #endregion
+            //#endregion
 
             #region OngletsOpening
             if (Manager_Raycast.Instance.m_FoundTag == "TriggerList")
@@ -125,6 +125,7 @@ public class Manager_Input : MonoBehaviour {
                 {
                     m_MainScreen.GetComponent<Screen_Slide>().LerpMain();
                     m_Commande.transform.position = new Vector3(m_Commande.transform.position.x, m_Commande.transform.position.y, 20);
+                    m_Request.transform.position = new Vector3(m_Request.transform.position.x, m_Request.transform.position.y, 20);
                     m_isClickedRP = false;
                 }
             }
@@ -141,6 +142,7 @@ public class Manager_Input : MonoBehaviour {
                 else
                 {
                     m_MainScreen.GetComponent<Screen_Slide>().LerpMain();
+                    m_Commande.transform.position = new Vector3(m_Commande.transform.position.x, m_Commande.transform.position.y, 20);
                     m_Request.transform.position = new Vector3(m_Request.transform.position.x, m_Request.transform.position.y, 20);
                     m_isClickedRP = false;
                 }
