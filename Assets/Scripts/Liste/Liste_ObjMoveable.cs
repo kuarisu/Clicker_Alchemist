@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Liste_ObjMoveable : MonoBehaviour {
 
-    public GameObject m_Manager;
+    //public GameObject m_Manager;
 
     
     public enum Postulant
@@ -39,7 +39,12 @@ public class Liste_ObjMoveable : MonoBehaviour {
             }
 
             Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_EmployeInArea.Clear();
+           
+
         }
+
+        Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_Border.GetComponent<Image>().enabled = true;
+        Manager_Raycast.Instance.m_ObjectMet.GetComponent<Liste_EmployArea>().m_Border.transform.SetAsLastSibling();
 
         transform.tag = "Employe";
         transform.position = Manager_Raycast.Instance.m_ObjectMet.transform.position;
