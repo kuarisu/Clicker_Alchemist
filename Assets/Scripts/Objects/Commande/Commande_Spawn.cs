@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Commande_Spawn : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class Commande_Spawn : MonoBehaviour
     private float m_TimerSpawn; //Temps avant qu'une nouvelle commande spawn
     [SerializeField]
     private float m_TimerLasting; //Temps pendant laquelle la commande reste
-    public float m_CurrentTime;
+    private float m_CurrentTime;
     // Spawn tous les X secondes des commandes random selon liste (si commande une fois plus du tout après ?) au transform de l'empty game object Request.
 
 
@@ -45,10 +46,13 @@ public class Commande_Spawn : MonoBehaviour
 
     IEnumerator TimeBeforeDestroy()
     {
+        Image _visualTimer = m_CurrentCommande.GetComponent<Commande_Impact>().m_VisualButton.GetComponent<Image>();
         while (m_CurrentTime < m_TimerLasting)
         {
-            m_CurrentTime++;
-            yield return new WaitForSeconds(1);
+            m_CurrentTime+= Time.deltaTime;
+            _visualTimer.fillAmount = 1- (((m_CurrentTime * 100) / m_TimerLasting) / 100);
+            
+            yield return new WaitForEndOfFrame();
         }
         Destroying();
         StartingTimers();

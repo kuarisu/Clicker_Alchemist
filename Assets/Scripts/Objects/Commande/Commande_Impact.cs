@@ -39,6 +39,8 @@ public class Commande_Impact : MonoBehaviour {
     [SerializeField]
     PotionType m_PotionTypeNeeded;
 
+    public GameObject m_VisualButton;
+
     void Awake()
     {
         

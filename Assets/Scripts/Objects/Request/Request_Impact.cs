@@ -8,6 +8,8 @@ public class Request_Impact : MonoBehaviour {
     public bool m_isAccepted = true;
     public bool m_isActivated = false;
 
+    public GameObject m_VisualTimer;
+
 
 
     [SerializeField]

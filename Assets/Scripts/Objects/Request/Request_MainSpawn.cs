@@ -2,6 +2,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Request_MainSpawn : MonoBehaviour {
 
@@ -50,10 +51,13 @@ public class Request_MainSpawn : MonoBehaviour {
 
     IEnumerator TimeBeforeDestroy()
     {
+        Image _visualTimer = m_CurrentRequest.GetComponent<Request_Impact>().m_VisualTimer.GetComponent<Image>();
         while (m_CurrentTime < m_TimerLasting)
         {
-            m_CurrentTime++;
-            yield return new WaitForSeconds(1);
+            m_CurrentTime += Time.deltaTime;
+            if(_visualTimer != null)
+            _visualTimer.fillAmount = 1 - (((m_CurrentTime * 100) / m_TimerLasting) / 100);
+            yield return new WaitForEndOfFrame();
         }
         Destroying();
         StartingTimers();
