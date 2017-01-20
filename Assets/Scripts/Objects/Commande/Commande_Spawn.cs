@@ -60,7 +60,7 @@ public class Commande_Spawn : MonoBehaviour
 
     void SpawnNewCommande()
     {
-        m_CurrentCommande = (GameObject)Instantiate(m_CommandeList[Random.Range(0, m_CommandeList.Count - 1)], new Vector3(0, transform.position.y, transform.position.z - 0.1f), transform.rotation);
+        m_CurrentCommande = (GameObject)Instantiate(m_CommandeList[Random.Range(0, m_CommandeList.Count - 1)], new Vector3(0, transform.position.y, 0), transform.rotation);
         m_CurrentCommande.transform.SetParent(this.transform, false);
     }
 

@@ -56,7 +56,7 @@ public class Request_MainSpawn : MonoBehaviour {
         {
             m_CurrentTime += Time.deltaTime;
             if(_visualTimer != null)
-            _visualTimer.fillAmount = 1 - (((m_CurrentTime * 100) / m_TimerLasting) / 100);
+                _visualTimer.fillAmount = 1 - (((m_CurrentTime * 100) / m_TimerLasting) / 100);
             yield return new WaitForEndOfFrame();
         }
         Destroying();
