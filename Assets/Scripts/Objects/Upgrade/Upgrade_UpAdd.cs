@@ -14,6 +14,8 @@ public class Upgrade_UpAdd : MonoBehaviour
     public int m_BasePrice;
     public int m_BaseAddition;
 
+    public float m_multiplicator;
+
     private int m_Addition;
     private int m_Price;
 
@@ -110,7 +112,7 @@ public class Upgrade_UpAdd : MonoBehaviour
     void LevelUp()
     {
         m_Level++;
-        m_Price = m_BasePrice  * m_Level;
+        m_Price = Mathf.FloorToInt (m_BasePrice  * Mathf.Pow(m_multiplicator,m_Level));
         m_Addition = m_BaseAddition * m_Level;
 
 

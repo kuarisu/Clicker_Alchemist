@@ -99,6 +99,10 @@ public class Manager_Input : MonoBehaviour {
                 if (m_isClickedList == false)
                 {
                     m_MainScreen.GetComponent<Screen_Slide>().LerpList();
+                    if (Manager_Raycast.Instance.m_ObjectMet.GetComponent<Trigger_Notification>().m_IsActive)
+                    {
+                        Manager_Raycast.Instance.m_ObjectMet.GetComponent<Trigger_Notification>().DisableNotification();
+                    }
                     m_isClickedList = true;
                 }
 
@@ -118,6 +122,11 @@ public class Manager_Input : MonoBehaviour {
 
                     m_MainScreen.GetComponent<Screen_Slide>().LerpRP();
                     m_Commande.transform.position = new Vector3(m_Commande.transform.position.x, m_Commande.transform.position.y, 0);
+
+                    if (Manager_Raycast.Instance.m_ObjectMet.GetComponent<Trigger_Notification>().m_IsActive)
+                    {
+                        Manager_Raycast.Instance.m_ObjectMet.GetComponent<Trigger_Notification>().DisableNotification();
+                    }
                     m_isClickedRP = true;
                 }
 
@@ -136,6 +145,10 @@ public class Manager_Input : MonoBehaviour {
                 {
                     m_MainScreen.GetComponent<Screen_Slide>().LerpRP();
                     m_Request.transform.position = new Vector3(m_Request.transform.position.x, m_Request.transform.position.y, 0);
+                    if (Manager_Raycast.Instance.m_ObjectMet.GetComponent<Trigger_Notification>().m_IsActive)
+                    {
+                        Manager_Raycast.Instance.m_ObjectMet.GetComponent<Trigger_Notification>().DisableNotification();
+                    }
                     m_isClickedRP = true;
                 }
 

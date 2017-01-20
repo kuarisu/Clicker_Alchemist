@@ -13,6 +13,8 @@ public class Upgrade_UpPerCent : MonoBehaviour
     public int m_BasePrice;
     public int m_BasePercent;
 
+    public int m_multiplicator;
+
     private int m_PerCent;
     private int m_Price;
 
@@ -109,7 +111,7 @@ public class Upgrade_UpPerCent : MonoBehaviour
     void LevelUp()
     {
         m_Level++;
-        m_Price = (m_BasePrice * m_BasePrice) * m_Level;
+        m_Price = Mathf.FloorToInt(m_BasePrice * Mathf.Pow(m_multiplicator, m_Level));
         m_PerCent = m_BasePercent * m_Level;
 
 

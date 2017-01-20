@@ -22,6 +22,7 @@ public class Request_MainSpawn : MonoBehaviour {
     public int m_TempBonus;
     // Spawn tous les X secondes des commandes random selon liste (si commande une fois plus du tout après ?) au transform de l'empty game object Request.
 
+    public GameObject m_TriggerRequest;
 
 	// Use this for initialization
 	void Start () {
@@ -51,6 +52,7 @@ public class Request_MainSpawn : MonoBehaviour {
 
     IEnumerator TimeBeforeDestroy()
     {
+        
         Image _visualTimer = m_CurrentRequest.GetComponent<Request_Impact>().m_VisualTimer.GetComponent<Image>();
         while (m_CurrentTime < m_TimerLasting)
         {
@@ -65,14 +67,18 @@ public class Request_MainSpawn : MonoBehaviour {
 
     void SpawnNewRequest()
     {
+        m_TriggerRequest.GetComponent<Trigger_Notification>().EnableNotification();
         m_CurrentRequest = (GameObject) Instantiate(m_RequestList[Random.Range(0, m_RequestList.Count - 1)], new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.1f), transform.rotation);
         m_CurrentRequest.transform.parent = this.transform;
     }
 
     public void Destroying()
     {
-        if(m_CurrentRequest != null)
-        Destroy(m_CurrentRequest);
+        if (m_CurrentRequest != null)
+        {
+            m_TriggerRequest.GetComponent<Trigger_Notification>().DisableNotification();
+            Destroy(m_CurrentRequest);
+        }
     }
 
     public void TimerTempo()

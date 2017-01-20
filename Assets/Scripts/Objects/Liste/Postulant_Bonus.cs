@@ -129,7 +129,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     m_TypePlant.GetComponent<Plante_Type>().m_MultActif += m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    m_TypePlant.GetComponent<Plante_Type>().m_MultActif += m_Addition;
+                    m_TypePlant.GetComponent<Plante_Type>().m_BonusActif += m_Addition;
                     break;
                 default:
                     break;
@@ -146,7 +146,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     m_TypePlant.GetComponent<Plante_Type>().m_MultActif -= m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    m_TypePlant.GetComponent<Plante_Type>().m_MultActif -= m_Addition;
+                    m_TypePlant.GetComponent<Plante_Type>().m_BonusActif -= m_Addition;
                     break;
                 default:
                     break;
@@ -170,7 +170,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     m_TypePlant.GetComponent<Plante_Type>().m_MultPassif += m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    m_TypePlant.GetComponent<Plante_Type>().m_MultPassif += m_Addition;
+                    m_TypePlant.GetComponent<Plante_Type>().m_BonusPassif += m_Addition;
                     break;
                 default:
                     break;
@@ -187,7 +187,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     m_TypePlant.GetComponent<Plante_Type>().m_MultPassif -= m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    m_TypePlant.GetComponent<Plante_Type>().m_MultPassif -= m_Addition;
+                    m_TypePlant.GetComponent<Plante_Type>().m_BonusPassif -= m_Addition;
                     break;
                 default:
                     break;
@@ -210,7 +210,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     Manager_Gold.Instance.m_MultActif += m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    Manager_Gold.Instance.m_MultActif += m_Addition;
+                    Manager_Gold.Instance.m_BonusActif += m_Addition;
                     break;
                 default:
                     break;
@@ -227,7 +227,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     Manager_Gold.Instance.m_MultActif -= m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    Manager_Gold.Instance.m_MultActif -= m_Addition;
+                    Manager_Gold.Instance.m_BonusActif -= m_Addition;
                     break;
                 default:
                     break;
@@ -251,7 +251,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     Manager_Gold.Instance.m_MultPassif += m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    Manager_Gold.Instance.m_MultPassif += m_Addition;
+                    Manager_Gold.Instance.m_BonusPassif += m_Addition;
                     break;
                 default:
                     break;
@@ -268,7 +268,7 @@ public class Postulant_Bonus : MonoBehaviour {
                     Manager_Gold.Instance.m_MultPassif -= m_Multiplicator;
                     break;
                 case TypeBonus.Add:
-                    Manager_Gold.Instance.m_MultPassif -= m_Addition;
+                    Manager_Gold.Instance.m_BonusPassif -= m_Addition;
                     break;
                 default:
                     break;

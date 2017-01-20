@@ -16,6 +16,7 @@ public class Commande_Spawn : MonoBehaviour
     private float m_CurrentTime;
     // Spawn tous les X secondes des commandes random selon liste (si commande une fois plus du tout après ?) au transform de l'empty game object Request.
 
+    public GameObject m_TriggerCommande;
 
     // Use this for initialization
     void Start()
@@ -50,7 +51,8 @@ public class Commande_Spawn : MonoBehaviour
         while (m_CurrentTime < m_TimerLasting)
         {
             m_CurrentTime+= Time.deltaTime;
-            _visualTimer.fillAmount = 1- (((m_CurrentTime * 100) / m_TimerLasting) / 100);
+            if(_visualTimer != null)
+                _visualTimer.fillAmount = 1- (((m_CurrentTime * 100) / m_TimerLasting) / 100);
             
             yield return new WaitForEndOfFrame();
         }
@@ -60,6 +62,7 @@ public class Commande_Spawn : MonoBehaviour
 
     void SpawnNewCommande()
     {
+        m_TriggerCommande.GetComponent<Trigger_Notification>().EnableNotification();
         m_CurrentCommande = (GameObject)Instantiate(m_CommandeList[Random.Range(0, m_CommandeList.Count - 1)], new Vector3(0, transform.position.y, 0), transform.rotation);
         m_CurrentCommande.transform.SetParent(this.transform, false);
     }
@@ -67,6 +70,9 @@ public class Commande_Spawn : MonoBehaviour
     public void Destroying()
     {
         if (m_CurrentCommande != null)
+        {
+            m_TriggerCommande.GetComponent<Trigger_Notification>().DisableNotification();
             Destroy(m_CurrentCommande);
+        }
     }
 }
