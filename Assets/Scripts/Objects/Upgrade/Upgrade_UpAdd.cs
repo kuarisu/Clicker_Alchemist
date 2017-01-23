@@ -13,7 +13,7 @@ public class Upgrade_UpAdd : MonoBehaviour
 
     public int m_BasePrice;
     public int m_BaseAddition;
-
+    
     public float m_multiplicator;
 
     private int m_Addition;

@@ -43,11 +43,11 @@ public class Manager_Ressources : MonoBehaviour
     public int m_TypePlant;
 
     [SerializeField]
-    GameObject m_Plante_01;
+    public GameObject m_Plante_01;
     [SerializeField]
-    GameObject m_Plante_02;
+    public GameObject m_Plante_02;
     [SerializeField]
-    GameObject m_Plante_03;
+    public GameObject m_Plante_03;
 
     string m_Score01;
     string m_Score02;

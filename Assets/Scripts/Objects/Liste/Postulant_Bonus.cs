@@ -79,13 +79,13 @@ public class Postulant_Bonus : MonoBehaviour {
         switch (m_TypeOfPlant)
         {
             case TypePlant.Greend:
-                m_TypePlant = m_ListPlant[0];
+                m_TypePlant = Manager_Ressources.Instance.m_Plante_01;
                 break;
             case TypePlant.Red:
-                m_TypePlant = m_ListPlant[1];
+                m_TypePlant = Manager_Ressources.Instance.m_Plante_02;
                 break;
             case TypePlant.Blue:
-                m_TypePlant = m_ListPlant[2];
+                m_TypePlant = Manager_Ressources.Instance.m_Plante_03;
                 break;
             default:
                 break;
